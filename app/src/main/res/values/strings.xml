@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Library Management</string>
+    <dimen name="toolbar_text">25sp</dimen>
+    <dimen name="normal_text">20sp</dimen>
+    <dimen name="small_text">16sp</dimen>
+    <dimen name="headline_text">30sp</dimen>
+    <dimen name="image_border">2sp</dimen>
+    <dimen name="image_button">75sp</dimen>
+
+
+    <dimen name="lay_pad">15sp</dimen>
+    <dimen name="text_pad">10sp</dimen>
+    <dimen name="button_pad">10sp</dimen>
+    <dimen name="inner_pad">5sp</dimen>
 </resources>
