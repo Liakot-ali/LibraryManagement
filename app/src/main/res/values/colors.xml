@@ -11,4 +11,5 @@
     <color name="normal_text_color">#000000</color>
     <color name="toolbar_text_color">#ffffff</color>
     <color name="toolbar_background">#007AD0</color>
+    <color name="imageView_border_color">#ffffff</color>
 </resources>

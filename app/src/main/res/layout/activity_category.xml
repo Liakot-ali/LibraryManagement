@@ -1,0 +1,1861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CategoryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarDemo"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/toolbar_background" />
+
+            <LinearLayout
+                android:id="@+id/toolbarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:orientation="horizontal">
+
+                <!--
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/admin_profilePicture"
+                    android:layout_width="60sp"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:padding="@dimen/inner_pad"
+                    android:src="@drawable/icon_user_profile_24dp"
+                    app:civ_border_color="@color/imageView_border_color"
+                    app:civ_border_width="@dimen/image_border"
+                    tools:ignore="VectorDrawableCompat" />
+
+                -->
+                <TextView
+                    android:id="@+id/toolbarTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Book Category"
+                    android:textColor="@color/toolbar_text_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/toolbar_text" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/lay_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:orientation="vertical"
+                    android:padding="@dimen/lay_pad">
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty of Agriculture"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/agronomy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textViewf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Agronomy"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAgronomy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="50+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/horticulture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Horticulture"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksHorticulture"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/soilScience"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVdiew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Soil Science"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksSoilScience"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/text_pad"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/entomology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textView1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Entomology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksEntomology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="56+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/plantPathology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVifdew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Plant Pathology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksPlantPathology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="59+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/geneticsPlantBreeding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textView14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Genetics &amp; Plant Breeding"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksGeneticsPlantBreeding"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="69+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/text_pad"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/cropPhysiologyEcology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textViefwf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Crop Physiology &amp; Ecology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksCropPhysiologyEcology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="50+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/agriculturalExtension"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/ffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Agricultural Extension"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAgriculturalExtension"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/agriculturalChemistry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/sdf"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Agricultural Chemistry"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAgriculturalChemistry"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/text_pad"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.25"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/agroforestryEnvironment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textViedfw1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Agroforestry &amp; Environment"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAgroforestryEnvironment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="56+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/biochemistryMolecularBiology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textfVifdew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Biochemistry &amp; Molecular Biology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksBiochemistryMolecularBiology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="59+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.25"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:orientation="vertical"
+                    android:padding="@dimen/lay_pad">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty Of Computer Science &amp; Engineering (CSE)"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/cse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVsiewf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="CSE"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksCSE"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="50+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/eee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fssfs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="EEE"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksEEE"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ece"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVddsfsiew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="ECE"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksECE"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:orientation="vertical"
+                    android:padding="@dimen/lay_pad">
+
+                    <TextView
+                        android:id="@+id/textVisdfew16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty Of Business Studies"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/accounting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVsidfewf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Accounting"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAccounting"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="54+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/financeBanking"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fsssdffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Finance &amp; Banking"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksFinanceBanking"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/management"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVdgddsfsiew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Management"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksManagement"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/marketing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fssssddffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Marketing"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksMarketing"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:padding="@dimen/lay_pad"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textVisdfew"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty Of Fisheries"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/fisheriesBiologyGenetics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVsisdfdfewf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Fisheries Biology &amp; Genetics"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksFisheriesBiologyGenetics"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="54+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/fisheriesManagement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fsssdsfffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Fisheries Management"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksFisheriesManagement"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/fisheriesTechnology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVdgddsfsisfew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Fisheries Technology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksFisheriesTechnology"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/aquaculture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fsssssdddffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Aquaculture"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAquaculture"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:padding="@dimen/lay_pad"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty of Veterinary &amp; Animal Science"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/microbiology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textViewf1sdd4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Microbiology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksMicrobiology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="50+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/pathologyParasitology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fsad"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Pathology &amp; Parasitology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksPathologyParasitology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/dairyPoultryScience"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVdiewsd14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Dairy &amp; Poultry Science"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksDairyPoultryScience"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/text_pad"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/anatomyHistology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/texsdtViedfw1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Anatomy &amp; Histology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAnatomyHistology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="56+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/generalAnimalScienceNutrition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVifdewsdf14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="General Animal Science &amp; Nutrition"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksGeneralAnimalScienceNutrition"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="59+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/geneticsAnimalBreeding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVisdfdew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Genetics &amp; Animal Breeding"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksGeneticsAnimalBreeding"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="69+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/text_pad"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.25"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/medicineSurgeryObstetrics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVisdfefwf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Medicine, Surgery &amp; Obstetrics"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksMedicineSurgeryObstetrics"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="50+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/physiologyPharmacology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/ffssfs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Physiology &amp; Pharmacology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksPhysiologyPharmacology"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1.25"
+
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:padding="@dimen/lay_pad"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textVfiew18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty of Engineering"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/agriculturalIndustrialEngineering"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textViewdff1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Agricultural &amp; Industrial Engineering"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksAgriculturalIndustrialEngineering"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="50+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/foodProcessingPreservation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fssdfs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Food Processing &amp; Preservation"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksFoodProcessingPreservation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/foodEngineeringTechnology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textjhuhVdiew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Food Engineering &amp; Technology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksFoodEngineeringTechnology"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/text_pad"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/foodScienceNutrition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVidfgtgdew1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Food Science &amp; Nutrition"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksFoodScienceNutrition"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="56+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/architecture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVsfsgifdew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Architecture"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksArchitecture"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="59+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/civilEngineering"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVdgdiew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Civil Engineering"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksCivilEngineering"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="69+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mechanicalEngineering"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fsssssdddfsdffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Mechanical Engineering"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksMechanicalEngineering"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:padding="@dimen/lay_pad"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textVisdfew2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty Of Science"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/chemistry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVsidfesgwf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Chemistry"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksChemistry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="54+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/Physics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fsssdfdffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Physics"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksPhysics"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mathematics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVdgfsddsfsiew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Mathematics"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksMathematics"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/statistics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fssfsssddffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Statistics"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksStatistics"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:padding="@dimen/lay_pad"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textVisdfew3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty Of Social Science &amp; Humanities"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/english"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/textVsidfesdfgwf1d4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="English"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksEnglish"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="54+ Books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/economics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fsssdfdsfffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Economics"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksEconomics"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/sociology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/texsftVdgfsddsfsiew14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Sociology"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksSociology"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="20+ books" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/developmentStudies"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_marginRight="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/dialog_holo_light_frame"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                            <TextView
+                                android:id="@+id/fssfssssfddffs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:text="Statistics"
+                                android:textColor="@color/black_color"
+                                android:textSize="@dimen/department_text" />
+
+                            <TextView
+                                android:id="@+id/booksDevelopmentStudies"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="25+ books" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inner_pad"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="@dimen/text_pad">
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
