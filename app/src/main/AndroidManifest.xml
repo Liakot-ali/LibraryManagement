@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".NextBookActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".NextBookActivity" />
         <activity android:name=".PendingListActivity" />
         <activity android:name=".MyBooksActivity" />
         <activity android:name=".ContactsActivity" />

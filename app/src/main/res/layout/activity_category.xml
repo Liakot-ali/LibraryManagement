@@ -71,6 +71,7 @@
                 android:orientation="vertical" >
 
                 <LinearLayout
+                    android:id="@+id/agriculture"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/lay_pad"
@@ -472,6 +473,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/computerScienceEnginnering"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/text_pad"
@@ -588,6 +590,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/businessStudies"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/text_pad"
@@ -762,6 +765,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/fisheries"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/text_pad"
@@ -935,6 +939,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/veterinaryAnimalScience"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/text_pad"
@@ -1237,6 +1242,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/engineering"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/text_pad"
@@ -1511,6 +1517,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/science"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/text_pad"
@@ -1684,6 +1691,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/socialScienceHumanities"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/text_pad"

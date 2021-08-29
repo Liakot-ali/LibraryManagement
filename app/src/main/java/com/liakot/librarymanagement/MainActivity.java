@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         homeMyBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MyBooksActivity.class);
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         homePendingList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,PendingListActivity.class);
+                Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });
