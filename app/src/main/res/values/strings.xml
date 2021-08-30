@@ -11,6 +11,7 @@
     <dimen name="image_button">75sp</dimen>
 
 
+    <dimen name="toolbarMargin">50sp</dimen>
     <dimen name="corners">5sp</dimen>
     <dimen name="strokeWidth">2sp</dimen>
     <dimen name="image_border">2sp</dimen>

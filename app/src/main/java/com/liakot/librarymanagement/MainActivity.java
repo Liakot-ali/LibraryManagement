@@ -2,6 +2,7 @@ package com.liakot.librarymanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,25 +11,37 @@ import android.widget.ImageView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
-    CircleImageView homeProfilePicture;
 
-    ImageView homeSearchBook, homeContacts, homeCategory, homeMyBooks, homeNextBook, homePendingList;
+    CircleImageView profilePicture;
+    ImageView searchBook, contacts, category, myBooks, nextBookList, pendingList, signOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        homeProfilePicture = findViewById(R.id.homeProfilePicture);
-        homeSearchBook = findViewById(R.id.homeSearchBook);
-        homeCategory = findViewById(R.id.homeCategory);
-        homeContacts = findViewById(R.id.homeContacts);
-        homeMyBooks = findViewById(R.id.homeMyBooks);
-        homePendingList = findViewById(R.id.homePendingList);
-        homeNextBook = findViewById(R.id.homeNextBook);
+
+        //----------------Initialization Section-----------
+        profilePicture = findViewById(R.id.homeProfilePicture);
+        searchBook = findViewById(R.id.homeSearchBook);
+        category = findViewById(R.id.homeCategory);
+        contacts = findViewById(R.id.homeContacts);
+        myBooks = findViewById(R.id.homeMyBooks);
+        pendingList = findViewById(R.id.homePendingList);
+        nextBookList = findViewById(R.id.homeNextBook);
+        signOut = findViewById(R.id.homeSignOut);
 
 
-        homeSearchBook.setOnClickListener(new View.OnClickListener() {
+        //--------------On click Section-------------
+        profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        searchBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
@@ -36,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        homeCategory.setOnClickListener(new View.OnClickListener() {
+        category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,CategoryActivity.class);
@@ -44,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        homeContacts.setOnClickListener(new View.OnClickListener() {
+        contacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ContactsActivity.class);
@@ -52,23 +65,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        homeMyBooks.setOnClickListener(new View.OnClickListener() {
+        myBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this,MyBooksActivity.class);
                 startActivity(intent);
             }
         });
 
-        homePendingList.setOnClickListener(new View.OnClickListener() {
+        pendingList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(MainActivity.this,PendingListActivity.class);
                 startActivity(intent);
             }
         });
 
-        homeNextBook.setOnClickListener(new View.OnClickListener() {
+        nextBookList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,NextBookActivity.class);
@@ -76,11 +89,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        homeProfilePicture.setOnClickListener(new View.OnClickListener() {
+        signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivityAdmin.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
     }

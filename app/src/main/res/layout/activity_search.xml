@@ -30,6 +30,8 @@
             <LinearLayout
                 android:id="@+id/toolbarLayout"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/toolbarMargin"
+                android:layout_marginRight="@dimen/toolbarMargin"
                 android:layout_height="?android:attr/actionBarSize"
                 android:orientation="horizontal">
 
@@ -74,11 +76,14 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/searchSearchBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:background="@drawable/search_box"
+                    android:padding="@dimen/text_pad"
                     android:inputType="textPersonName"
+                    android:foregroundGravity="right|center"
                     android:hint="Search Here" />
 
             </LinearLayout>
@@ -88,6 +93,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ListView
+                    android:id="@+id/searchList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>

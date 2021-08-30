@@ -29,6 +29,8 @@
             <LinearLayout
                 android:id="@+id/toolbarLayout"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/toolbarMargin"
+                android:layout_marginRight="@dimen/toolbarMargin"
                 android:layout_height="?android:attr/actionBarSize"
                 android:orientation="horizontal">
 
@@ -51,7 +53,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Registration Page"
+                    android:text="Registration"
                     android:textColor="@color/toolbar_text_color"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/toolbar_text" />
@@ -145,7 +147,7 @@
                                         android:orientation="vertical">
 
                                         <EditText
-                                            android:id="@+id/userFirstName"
+                                            android:id="@+id/registerFirstName"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/edit_text_style40"
@@ -154,7 +156,7 @@
                                             android:padding="@dimen/editTextPad" />
 
                                         <EditText
-                                            android:id="@+id/userLastName"
+                                            android:id="@+id/registerLastName"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="@dimen/inner_pad"
@@ -196,11 +198,11 @@
                                         android:orientation="vertical">
 
                                         <EditText
-                                            android:id="@+id/registerSid"
+                                            android:id="@+id/registerStudentid"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/edit_text_style40"
-                                            android:hint="Unique Id"
+                                            android:hint="1201001"
                                             android:inputType="number"
                                             android:padding="@dimen/editTextPad" />
                                     </LinearLayout>
@@ -237,7 +239,7 @@
                                         android:orientation="vertical">
 
                                         <EditText
-                                            android:id="@+id/registerUserPhone"
+                                            android:id="@+id/registerPhone"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/edit_text_style40"
@@ -314,7 +316,7 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/registerBtn"
+                        android:id="@+id/registerRegisterBtn"
                         style="@android:style/Widget.Button.Small"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -342,7 +344,7 @@
                             android:textColor="@color/normal_text_color" />
 
                         <TextView
-                            android:id="@+id/gotoSignIn"
+                            android:id="@+id/registerGotoSignIn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

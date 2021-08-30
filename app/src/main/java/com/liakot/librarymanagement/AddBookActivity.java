@@ -7,13 +7,14 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class NextBookActivity extends AppCompatActivity {
+public class AddBookActivity extends AppCompatActivity {
+
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_next_book);
+        setContentView(R.layout.activity_add_book);
 
         //---------for back button----------
         toolbar = findViewById(R.id.toolbarDemo);
@@ -22,7 +23,9 @@ public class NextBookActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        //--------------Initialization Section--------------
+        //------------Initialization Section---------------
+
+
     }
 
     //---------for back to home-------------

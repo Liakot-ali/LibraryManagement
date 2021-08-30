@@ -30,6 +30,8 @@
             <LinearLayout
                 android:id="@+id/toolbarLayout"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/toolbarMargin"
+                android:layout_marginRight="@dimen/toolbarMargin"
                 android:layout_height="?android:attr/actionBarSize"
                 android:orientation="horizontal">
 
@@ -68,7 +70,7 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/contactListVIew"
+                android:id="@+id/nextBookListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
