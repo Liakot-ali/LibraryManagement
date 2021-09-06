@@ -129,7 +129,8 @@
                             android:id="@+id/addBookAuthor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/edit_text_style40"
+                            android:background="@drawable/edit_text_style100"
+                            android:gravity="bottom"
                             android:hint="Author"
                             android:inputType="textMultiLine"
                             android:padding="@dimen/editTextPad" />
@@ -315,7 +316,7 @@
                         android:textSize="@dimen/button_text"
                         android:background="@drawable/button_style"
                         android:textColor="@color/white_color"
-                        android:text="Button" />
+                        android:text="Add" />
                 </LinearLayout>
 
             </LinearLayout>

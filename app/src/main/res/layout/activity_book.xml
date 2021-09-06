@@ -105,7 +105,7 @@
                             android:textSize="@dimen/department_text" />
 
                         <TextView
-                            android:id="@+id/authorName"
+                            android:id="@+id/bookAuthorName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/inner_pad"

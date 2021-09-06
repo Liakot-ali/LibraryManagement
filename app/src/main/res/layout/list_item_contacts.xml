@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/inner_pad"
+        android:layout_marginBottom="@dimen/inner_pad"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:orientation="vertical"
+        android:padding="@dimen/text_pad">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/itemContactsName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Name"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/itemContactsPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/normal_text"
+                android:text="Position" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lskjf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile: "
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/small_text" />
+
+            <TextView
+                android:id="@+id/itemContactsNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/normal_text"
+                android:textColor="@color/normal_text_color"
+                android:text="01234567890" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
