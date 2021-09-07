@@ -228,7 +228,7 @@
                                         android:id="@+id/lakjfir"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Phone"
+                                        android:text="Email"
                                         android:textColor="@color/normal_text_color"
                                         android:textIsSelectable="true"
                                         android:textSize="@dimen/normal_text" />
@@ -239,12 +239,12 @@
                                         android:orientation="vertical">
 
                                         <EditText
-                                            android:id="@+id/registerPhone"
+                                            android:id="@+id/registerEmail"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/edit_text_style40"
-                                            android:hint="12345678901"
-                                            android:inputType="number"
+                                            android:hint="example123@gmail.com"
+                                            android:inputType="textEmailAddress"
                                             android:padding="@dimen/editTextPad" />
                                     </LinearLayout>
 

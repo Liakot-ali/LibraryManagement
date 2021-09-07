@@ -149,7 +149,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/edit_text_style40"
-                                            android:hint="1201001"
+                                            android:hint="1234567"
                                             android:inputType="number"
                                             android:padding="@dimen/editTextPad" />
                                     </LinearLayout>
