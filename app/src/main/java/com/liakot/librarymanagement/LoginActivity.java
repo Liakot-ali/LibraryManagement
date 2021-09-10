@@ -1,5 +1,6 @@
 package com.liakot.librarymanagement;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,10 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -21,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
     String studentIDSt, passwordSt;
     FirebaseDatabase database;
     FirebaseAuth mAuth;
+
+    
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +86,66 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     //--------------For Student-----------------
                     else {
-                        DatabaseReference myRef = database.getReference("Student");
+                        DatabaseReference myRef = database.getReference("Student").child("UserDetails");
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String emailSt = null, mainPass = null;
+                                boolean valid = false;
+                                for(DataSnapshot snap : snapshot.getChildren())
+                                {
+                                    UserProfileClass profile = snap.getValue(UserProfileClass.class);
+                                    if(profile.getStudentId().equals(studentIDSt))
+                                    {
+                                        valid = true;
+                                        emailSt = profile.getEmail();
+                                        mainPass = profile.getPassword();
+                                        break;
+                                    }
+                                }
+                                if (!valid)
+                                {
+                                    studentId.setError("Not registered yet");
+                                    studentId.requestFocus();
+                                    password.clearFocus();
+                                }
+                                else if(!mainPass.equals(passwordSt))
+                                {
+                                    password.setError("Password no match");
+                                    password.requestFocus();
+                                    studentId.clearFocus();
+                                }
+                                else{
+                                    studentId.clearFocus();
+                                    password.clearFocus();
+                                    mAuth.signInWithEmailAndPassword(emailSt, passwordSt)
+                                            .addOnCompleteListener(task -> {
+                                                if(task.isSuccessful()){
 
-                        //TODO
+                                                    studentId.setText("");
+                                                    password.setText("");
+
+                                                    Toast.makeText(getApplicationContext(), "Log In successful", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                                else{
+                                                    Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                                }
+
+                                            });
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        
                     }
                 }
 
@@ -85,13 +153,6 @@ public class LoginActivity extends AppCompatActivity {
                 if(studentIDSt.equals("1000100"))
                 {
                     Intent intent = new Intent(LoginActivity.this, MainActivityAdmin.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
-                else{
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

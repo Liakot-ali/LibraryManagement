@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "737410878679",
+    "project_id": "library-management-8d07f",
+    "storage_bucket": "library-management-8d07f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737410878679:android:9eecd7f0df0aa22257f492",
+        "android_client_info": {
+          "package_name": "com.liakot.librarymanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737410878679-eo4t2lo00bt8ht4okkds5cfjdd1vcodl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4CxEY1a6tmVc6nmeWKPfaLVfdWHajXOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737410878679-eo4t2lo00bt8ht4okkds5cfjdd1vcodl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
