@@ -9,7 +9,7 @@ public class AddBookClass {
     private String department;
     private String quantity;
     private String position;
-    String date, time;
+    private String date, time;
 
     public AddBookClass()
     {

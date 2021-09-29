@@ -9,9 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.UUID;
 
@@ -24,6 +31,7 @@ public class BookActivity extends AppCompatActivity {
     String bookNameSt, authorNameSt, editionSt, pageSt, positionSt, quantitySt, departmentSt;
 
     FirebaseDatabase database;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,31 +40,70 @@ public class BookActivity extends AppCompatActivity {
 
         Initialize();
 
-        requestBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        requestBtn.setOnClickListener(view -> {
+            if (!quantitySt.equals("0")) {
+                String userId = mAuth.getUid();
                 String uniqueId = UUID.randomUUID().toString();
-                DatabaseReference myRef = database.getReference("Student").child("RequestList").child(uniqueId);
+                assert userId != null;
+                DatabaseReference studentProfileRef = database.getReference("Student").child("User").child(userId).child("Profile");
+                DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("PendingList").child(uniqueId);
+                DatabaseReference adminRef = database.getReference("Admin").child("RequestList").child(uniqueId);
                 //------------- add the book to the pending List-------------
-                //TODO
+                AddBookClass requestBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt);
+                //-----------add the book and student details in admin Request List--------
+                RequestBookClass newRequestBook = new RequestBookClass();
+                newRequestBook.setBookName(bookNameSt);
+                newRequestBook.setAuthorName(authorNameSt);
+                studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        UserProfileClass userProfile = snapshot.getValue(UserProfileClass.class);
+                        newRequestBook.setStudentName(userProfile.getFirstName() + userProfile.getLastName());
+                        newRequestBook.setStudentId(userProfile.getStudentId());
+                        newRequestBook.setStudentEmail(userProfile.getEmail());
+                        newRequestBook.setStudentPhone(userProfile.getPhone());
+                        newRequestBook.setStudentDepartment(userProfile.getDepartment());
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                myRef.setValue(requestBook).addOnCompleteListener(task -> {
+                    adminRef.setValue(newRequestBook).addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "The book needs to be approved by librarian", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                });
+            } else {
+                Toast.makeText(getApplicationContext(), "This book is not available now. Add it to next list", Toast.LENGTH_SHORT).show();
             }
         });
 
-        addNextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String uniqueId = UUID.randomUUID().toString();
-                DatabaseReference myRef = database.getReference("Student").child("NextList").child(uniqueId);
-                //--------------- add the book to the nextList ------------------
-                //TODO
-            }
+        addNextBtn.setOnClickListener(v -> {
+            String userId = mAuth.getUid();
+            String uniqueId = UUID.randomUUID().toString();
+            assert userId != null;
+            DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("NextList").child(uniqueId);
+            //--------------- add the book to the nextList ------------------
+            AddBookClass nextBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt);
+            myRef.setValue(nextBook).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "The book is added to your Next List", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Something went wrong. Please try again", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
     }
 //-------Out if Main Section-------------
 
-    public void Initialize()
-    {
+    public void Initialize() {
         //---------for back button----------
         toolbar = findViewById(R.id.toolbarDemo);
         setSupportActionBar(toolbar);
@@ -65,6 +112,7 @@ public class BookActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         database = FirebaseDatabase.getInstance("https://library-management-8d07f-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        mAuth = FirebaseAuth.getInstance();
         //-------------Initialization Section--------------
         bookName = findViewById(R.id.bookName);
         authorName = findViewById(R.id.bookAuthorName);
@@ -89,6 +137,7 @@ public class BookActivity extends AppCompatActivity {
         position.setText(positionSt);
         quantity.setText(quantitySt);
     }
+
     //---------for back to home-------------
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
