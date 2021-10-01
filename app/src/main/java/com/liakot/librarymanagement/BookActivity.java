@@ -40,6 +40,7 @@ public class BookActivity extends AppCompatActivity {
 
         Initialize();
 
+        //TODO
         requestBtn.setOnClickListener(view -> {
             if (!quantitySt.equals("0")) {
                 String userId = mAuth.getUid();
@@ -48,17 +49,21 @@ public class BookActivity extends AppCompatActivity {
                 DatabaseReference studentProfileRef = database.getReference("Student").child("User").child(userId).child("Profile");
                 DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("PendingList").child(uniqueId);
                 DatabaseReference adminRef = database.getReference("Admin").child("RequestList").child(uniqueId);
+
                 //------------- add the book to the pending List-------------
-                AddBookClass requestBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt);
+                AddBookClass requestBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
                 //-----------add the book and student details in admin Request List--------
                 RequestBookClass newRequestBook = new RequestBookClass();
                 newRequestBook.setBookName(bookNameSt);
                 newRequestBook.setAuthorName(authorNameSt);
+                newRequestBook.setBookId(uniqueId);
+                newRequestBook.setUserId(userId);
                 studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         UserProfileClass userProfile = snapshot.getValue(UserProfileClass.class);
-                        newRequestBook.setStudentName(userProfile.getFirstName() + userProfile.getLastName());
+                        assert userProfile != null;
+                        newRequestBook.setStudentName(userProfile.getFirstName()+ " " + userProfile.getLastName());
                         newRequestBook.setStudentId(userProfile.getStudentId());
                         newRequestBook.setStudentEmail(userProfile.getEmail());
                         newRequestBook.setStudentPhone(userProfile.getPhone());
@@ -77,20 +82,20 @@ public class BookActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
                         }
                     });
-
                 });
             } else {
                 Toast.makeText(getApplicationContext(), "This book is not available now. Add it to next list", Toast.LENGTH_SHORT).show();
             }
         });
 
+        //TODO
         addNextBtn.setOnClickListener(v -> {
             String userId = mAuth.getUid();
             String uniqueId = UUID.randomUUID().toString();
             assert userId != null;
             DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("NextList").child(uniqueId);
             //--------------- add the book to the nextList ------------------
-            AddBookClass nextBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt);
+            AddBookClass nextBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
             myRef.setValue(nextBook).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "The book is added to your Next List", Toast.LENGTH_SHORT).show();

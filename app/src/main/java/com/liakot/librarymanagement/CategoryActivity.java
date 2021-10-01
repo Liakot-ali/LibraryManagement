@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 public class CategoryActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-
     LinearLayout agronomy, horticulture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +37,16 @@ public class CategoryActivity extends AppCompatActivity {
         agronomy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CategoryActivity.this, ContactsActivity.class);
+                Intent intent = new Intent(CategoryActivity.this, DepartmentActivity.class);
+                intent.putExtra("department", "Agronomy");
                 startActivity(intent);
             }
         });
         horticulture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CategoryActivity.this, BookActivity.class);
+                Intent intent = new Intent(CategoryActivity.this, DepartmentActivity.class);
+                intent.putExtra("department", "Horticulture");
                 startActivity(intent);
             }
         });

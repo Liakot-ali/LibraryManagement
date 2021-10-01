@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BookActivity">
+    tools:context=".UserPendingBookActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +30,9 @@
             <LinearLayout
                 android:id="@+id/toolbarLayout"
                 android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
                 android:layout_marginLeft="@dimen/toolbarMargin"
                 android:layout_marginRight="@dimen/toolbarMargin"
-                android:layout_height="?android:attr/actionBarSize"
                 android:orientation="horizontal">
 
                 <!--
@@ -54,7 +54,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Book"
+                    android:text="Pending Book"
                     android:textColor="@color/toolbar_text_color"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/toolbar_text" />
@@ -71,13 +71,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/lay_pad"
-                    android:padding="@dimen/text_pad"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/text_pad">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -87,7 +88,7 @@
                         android:padding="@dimen/text_pad">
 
                         <TextView
-                            android:id="@+id/bookName"
+                            android:id="@+id/pendingBookName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/inner_pad"
@@ -106,7 +107,7 @@
                             android:textSize="@dimen/normal_text" />
 
                         <TextView
-                            android:id="@+id/bookAuthorName"
+                            android:id="@+id/pendingAuthorName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/lay_pad"
@@ -119,9 +120,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/text_pad"
                         android:background="@android:drawable/dialog_holo_light_frame"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="@dimen/text_pad">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -130,33 +131,33 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/bookEdition"
+                                android:id="@+id/pendingEdition"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="@dimen/inner_pad"
-                                android:textSize="@dimen/small_text"
-                                android:text="x'th edition" />
+                                android:text="x'th edition"
+                                android:textSize="@dimen/small_text" />
 
                             <TextView
-                                android:id="@+id/bookQuantity"
+                                android:id="@+id/pendingQuantity"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="right"
                                 android:padding="@dimen/inner_pad"
-                                android:textSize="@dimen/small_text"
-                                android:text="12 books" />
+                                android:text="12 books"
+                                android:textSize="@dimen/small_text" />
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/booksPosition"
+                            android:id="@+id/pendingPosition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/inner_pad"
+                            android:text="Position"
                             android:textColor="@color/normal_text_color"
-                            android:textSize="@dimen/small_text"
-                            android:text="Position" />
+                            android:textSize="@dimen/small_text" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -164,32 +165,52 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/button_pad"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="@dimen/button_pad">
 
                     <Button
-                        android:id="@+id/bookRequestBtn"
+                        android:id="@+id/pendingDeleteRequestBtn"
+                        style="@android:style/Widget.Button.Small"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_style"
-                        android:textColor="@color/white_color"
-                        android:textSize="@dimen/button_text"
                         android:layout_marginRight="@dimen/inner_pad"
-                        style="@android:style/Widget.Button.Small"
-                        android:text="Request" />
+                        android:layout_weight="1"
+                        android:background="@drawable/button_style"
+                        android:text="Delete"
+                        android:textColor="@color/white_color"
+                        android:textSize="@dimen/button_text" />
 
                     <Button
-                        android:id="@+id/bookAddNextBtn"
+                        android:id="@+id/pendingAddNextBtn"
+                        style="@android:style/Widget.Button.Small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/inner_pad"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_style"
+                        android:text="Add Next"
+                        android:textColor="@color/white_color"
+                        android:textSize="@dimen/button_text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/button_pad"
+                    android:paddingRight="@dimen/button_pad"
+                    android:paddingBottom="@dimen/button_pad"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/pendingContactLibrarianBtn"
+                        style="@android:style/Widget.Button.Small"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/button_style"
+                        android:text="Contact Librarian"
                         android:textColor="@color/white_color"
-                        android:textSize="@dimen/button_text"
-                        android:layout_marginLeft="@dimen/inner_pad"
-                        style="@android:style/Widget.Button.Small"
-                        android:text="Add Next" />
+                        android:textSize="@dimen/button_text" />
                 </LinearLayout>
 
             </LinearLayout>

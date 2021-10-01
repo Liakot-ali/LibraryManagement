@@ -1,14 +1,14 @@
 package com.liakot.librarymanagement;
 
 public class RequestBookClass {
-    private String bookName, authorName, studentName, studentId, studentEmail, studentPhone, studentDepartment;
+    private String bookName, authorName, studentName, studentId, studentEmail, studentPhone, studentDepartment, bookId, userId;
 
     public  RequestBookClass()
     {
 
     }
 
-    public RequestBookClass(String bookName, String authorName, String studentName, String studentId, String studentEmail, String studentPhone, String studentDepartment) {
+    public RequestBookClass(String bookName, String authorName, String studentName, String studentId, String studentEmail, String studentPhone, String studentDepartment, String bookId, String userId) {
         this.bookName = bookName;
         this.authorName = authorName;
         this.studentName = studentName;
@@ -16,6 +16,8 @@ public class RequestBookClass {
         this.studentEmail = studentEmail;
         this.studentPhone = studentPhone;
         this.studentDepartment = studentDepartment;
+        this.bookId = bookId;
+        this.userId = userId;
     }
 
 
@@ -73,5 +75,21 @@ public class RequestBookClass {
 
     public void setStudentDepartment(String studentDepartment) {
         this.studentDepartment = studentDepartment;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

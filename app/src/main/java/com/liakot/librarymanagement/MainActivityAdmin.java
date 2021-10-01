@@ -29,6 +29,13 @@ public class MainActivityAdmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        requestList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivityAdmin.this, AdminRequestListActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

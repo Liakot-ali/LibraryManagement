@@ -59,19 +59,25 @@ public class AddBookActivity extends AppCompatActivity {
             String bookId = UUID.randomUUID().toString();
 
             DatabaseReference myRef = database.getReference("Student").child("Books").child(bookId);
-            AddBookClass book = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt);
+            DatabaseReference departmentRef = database.getReference("Student").child("Department").child(departmentSt).child(bookId);
+            AddBookClass book = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, bookId);
 
             myRef.setValue(book)
                     .addOnSuccessListener(aVoid -> {
-                        progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Book Added Successfully", Toast.LENGTH_SHORT).show();
-                        bookName.setText("");
-                        authorName.setText("");
-                        edition.setText("");
-                        totalPage.setText("");
-                        department.setText("");
-                        quantity.setText("");
-                        position.setText("");
+                        departmentRef.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "Book Added Successfully", Toast.LENGTH_SHORT).show();
+                                bookName.setText("");
+                                authorName.setText("");
+                                edition.setText("");
+                                totalPage.setText("");
+                                department.setText("");
+                                quantity.setText("");
+                                position.setText("");
+                            }
+                        });
                     })
                     .addOnFailureListener(e -> {
                         progressDialog.dismiss();

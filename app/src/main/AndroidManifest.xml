@@ -8,6 +8,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ContactStudentActivity"></activity>
+        <activity android:name=".PersonContactActivity" />
+        <activity android:name=".DepartmentActivity" />
+        <activity android:name=".AdminRequestBookActivity" />
+        <activity android:name=".UserNextBookActivity" />
+        <activity android:name=".UserPendingBookActivity" />
+        <activity android:name=".AdminRequestListActivity" />
         <activity android:name=".AddBookActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".BookActivity" />
@@ -15,6 +22,7 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

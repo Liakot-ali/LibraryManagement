@@ -10,13 +10,14 @@ public class AddBookClass {
     private String quantity;
     private String position;
     private String date, time;
+    private String bookId;
 
     public AddBookClass()
     {
 
     }
 
-    public AddBookClass(String bookName, String authorName, String edition, String page, String department, String quantity, String position, String date, String time) {
+    public AddBookClass(String bookName, String authorName, String edition, String page, String department, String quantity, String position, String date, String time, String bookId) {
         this.bookName = bookName;
         this.authorName = authorName;
         this.edition = edition;
@@ -26,9 +27,10 @@ public class AddBookClass {
         this.position = position;
         this.date = date;
         this.time = time;
+        this.bookId = bookId;
     }
 
-    public AddBookClass(String bookName, String authorName, String edition, String page, String department, String quantity, String position) {
+    public AddBookClass(String bookName, String authorName, String edition, String page, String department, String quantity, String position, String bookId) {
         this.bookName = bookName;
         this.authorName = authorName;
         this.edition = edition;
@@ -36,6 +38,7 @@ public class AddBookClass {
         this.department = department;
         this.quantity = quantity;
         this.position = position;
+        this.bookId = bookId;
     }
 
     public String getBookName() {
@@ -107,5 +110,13 @@ public class AddBookClass {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 }

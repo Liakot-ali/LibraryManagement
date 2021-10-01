@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,10 +26,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
-
+public class DepartmentActivity extends AppCompatActivity {
     Toolbar toolbar;
-    ListView searchList;
+    TextView toolbarTextView;
+    String departmentName;
+    ListView departmentListView;
+    FirebaseAuth mAuth;
     FirebaseDatabase database;
     ArrayList<AddBookClass> arrayList;
     BaseAdapter adapter;
@@ -38,40 +39,36 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_department);
 
         Initialize();
 
-        DatabaseReference myRef = database.getReference("Student").child("Books");
-        //-------------retrieve value from firebase to ArrayList-------------
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference departmentRef = database.getReference("Student").child("Department").child(departmentName);
+        departmentRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren())
+                for(DataSnapshot snapshot1 : snapshot.getChildren())
                 {
-                    AddBookClass newBook = snap.getValue(AddBookClass.class);
+                    AddBookClass newBook = snapshot1.getValue(AddBookClass.class);
                     arrayList.add(newBook);
                 }
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Please Check your Internet connection",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
 
-        //---------------Adapt value from arrayList to ListView--------------
         Adapter();
-        searchList.setAdapter(adapter);
+        departmentListView.setAdapter(adapter);
 
-
-        //---------------------for specific item click------------------
-        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //----------For Specific listItem---------
+        departmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 AddBookClass newBook = arrayList.get(position);
-                String bookName, authorName, edition, page, department, quantity, bookPosition;
+                String bookName, authorName, edition, page, department, quantity, bookPosition, bookId;
                 bookName = newBook.getBookName();
                 authorName = newBook.getAuthorName();
                 edition = newBook.getEdition();
@@ -79,8 +76,10 @@ public class SearchActivity extends AppCompatActivity {
                 department = newBook.getDepartment();
                 quantity = newBook.getQuantity();
                 bookPosition = newBook.getPosition();
+                bookId = newBook.getBookId();
 
-                Intent intent = new Intent(SearchActivity.this, BookActivity.class);
+                //---TODO
+                Intent intent = new Intent(DepartmentActivity.this, BookActivity.class);
                 intent.putExtra("bookName", bookName);
                 intent.putExtra("authorName", authorName);
                 intent.putExtra("edition", edition);
@@ -88,14 +87,17 @@ public class SearchActivity extends AppCompatActivity {
                 intent.putExtra("department", department);
                 intent.putExtra("quantity", quantity);
                 intent.putExtra("position", bookPosition);
+                intent.putExtra("bookId", bookId);
                 startActivity(intent);
             }
         });
-    }
-//-------------------Out of main section--------------------
 
-    public void Initialize()
-    {
+    }
+
+
+//------------Out of main section-------
+    private void Initialize() {
+
         //---------for back button----------
         toolbar = findViewById(R.id.toolbarDemo);
         setSupportActionBar(toolbar);
@@ -103,11 +105,17 @@ public class SearchActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        database = FirebaseDatabase.getInstance("https://library-management-8d07f-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        //------------Initialize--------------
 
-        //------------Initialization Section------------
-        searchList = findViewById(R.id.searchList);
-        arrayList = new ArrayList<AddBookClass>();
+        database = FirebaseDatabase.getInstance("https://library-management-8d07f-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        mAuth = FirebaseAuth.getInstance();
+
+        departmentName = getIntent().getStringExtra("department");
+        toolbarTextView = findViewById(R.id.toolbarTextView);
+        departmentListView =  findViewById(R.id.departmentListView);
+        arrayList = new ArrayList<>();
+
+        toolbarTextView.setText(departmentName);
     }
 
     //------------Adapter all work----------
@@ -153,12 +161,4 @@ public class SearchActivity extends AppCompatActivity {
         };
     }
 
-    //---------for back to home-------------
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

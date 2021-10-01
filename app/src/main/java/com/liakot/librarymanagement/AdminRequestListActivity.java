@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,29 +28,32 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
-
+public class AdminRequestListActivity extends AppCompatActivity {
     Toolbar toolbar;
-    ListView searchList;
+    FirebaseAuth mAuth;
     FirebaseDatabase database;
-    ArrayList<AddBookClass> arrayList;
+    ArrayList<RequestBookClass> arrayList;
+    ListView requestListView;
+    ProgressDialog progressDialog;
     BaseAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_admin_request_list);
 
         Initialize();
 
-        DatabaseReference myRef = database.getReference("Student").child("Books");
+        String userId = mAuth.getUid();
+        assert userId != null;
+        DatabaseReference myRef = database.getReference("Admin").child("RequestList");
         //-------------retrieve value from firebase to ArrayList-------------
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap : snapshot.getChildren())
                 {
-                    AddBookClass newBook = snap.getValue(AddBookClass.class);
+                    RequestBookClass newBook = snap.getValue(RequestBookClass.class);
                     arrayList.add(newBook);
                 }
                 adapter.notifyDataSetChanged();
@@ -63,39 +67,45 @@ public class SearchActivity extends AppCompatActivity {
 
         //---------------Adapt value from arrayList to ListView--------------
         Adapter();
-        searchList.setAdapter(adapter);
+        requestListView.setAdapter(adapter);
+        progressDialog.dismiss();
 
 
         //---------------------for specific item click------------------
-        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        requestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AddBookClass newBook = arrayList.get(position);
-                String bookName, authorName, edition, page, department, quantity, bookPosition;
+                RequestBookClass newBook = arrayList.get(position);
+                String bookName, authorName, studentName, studentId, studentEmail, studentPhone, studentDepartment, bookId, userId;
                 bookName = newBook.getBookName();
                 authorName = newBook.getAuthorName();
-                edition = newBook.getEdition();
-                page = newBook.getPage();
-                department = newBook.getDepartment();
-                quantity = newBook.getQuantity();
-                bookPosition = newBook.getPosition();
+                studentName = newBook.getStudentName();
+                studentId = newBook.getStudentId();
+                studentEmail = newBook.getStudentEmail();
+                studentPhone = newBook.getStudentPhone();
+                studentDepartment = newBook.getStudentDepartment();
+                bookId = newBook.getBookId();
+                userId = newBook.getUserId();
 
-                Intent intent = new Intent(SearchActivity.this, BookActivity.class);
+
+                Intent intent = new Intent(AdminRequestListActivity.this, AdminRequestBookActivity.class);
                 intent.putExtra("bookName", bookName);
                 intent.putExtra("authorName", authorName);
-                intent.putExtra("edition", edition);
-                intent.putExtra("page", page);
-                intent.putExtra("department", department);
-                intent.putExtra("quantity", quantity);
-                intent.putExtra("position", bookPosition);
+                intent.putExtra("studentEmail", studentEmail);
+                intent.putExtra("studentName", studentName);
+                intent.putExtra("studentDepartment", studentDepartment);
+                intent.putExtra("studentId", studentId);
+                intent.putExtra("studentPhone", studentPhone);
+                intent.putExtra("bookId", bookId);
+                intent.putExtra("userId", userId);
                 startActivity(intent);
             }
         });
-    }
-//-------------------Out of main section--------------------
 
-    public void Initialize()
-    {
+    }
+
+    private void Initialize() {
+
         //---------for back button----------
         toolbar = findViewById(R.id.toolbarDemo);
         setSupportActionBar(toolbar);
@@ -104,10 +114,18 @@ public class SearchActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         database = FirebaseDatabase.getInstance("https://library-management-8d07f-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        mAuth = FirebaseAuth.getInstance();
 
-        //------------Initialization Section------------
-        searchList = findViewById(R.id.searchList);
-        arrayList = new ArrayList<AddBookClass>();
+        progressDialog = new ProgressDialog(AdminRequestListActivity.this);
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setMessage("We working on your book..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        //------------Initialization Section--------
+        requestListView = findViewById(R.id.adminRequestListView);
+        arrayList = new ArrayList<>();
+
     }
 
     //------------Adapter all work----------
@@ -146,7 +164,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 bookName.setText(arrayList.get(position).getBookName());
                 authorName.setText(arrayList.get(position).getAuthorName());
-                quantity.setText(arrayList.get(position).getQuantity());
+                quantity.setText(arrayList.get(position).getStudentId());
 
                 return view;
             }
