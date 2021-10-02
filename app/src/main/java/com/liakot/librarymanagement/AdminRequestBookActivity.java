@@ -40,8 +40,6 @@ public class AdminRequestBookActivity extends AppCompatActivity {
         Initialize();
 
         DatabaseReference userRef = database.getReference("Student").child("User").child(userIdSt).child("Profile");
-//        DatabaseReference bookRef = database.getReference("Student").child("Books").child(bookIdSt);
-//        DatabaseReference bookRef = database.getReference("Student").child("User").child(userIdSt).child("PendingList").child(bookIdSt);
         DatabaseReference requestRef = database.getReference("Admin").child("RequestList").child(bookIdSt);
         DatabaseReference pendingRef = database.getReference("Student").child("User").child(userIdSt).child("PendingList").child(bookIdSt);
         DatabaseReference myBookRef = database.getReference("Student").child("User").child(userIdSt).child("MyBooks").child(bookIdSt);
@@ -50,8 +48,7 @@ public class AdminRequestBookActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserProfileClass profile = snapshot.getValue(UserProfileClass.class);
-//                studentNameSt = profile.getFirstName() + " " + profile.getLastName();
-//                studentIdSt = profile.getStudentId();
+
                 assert profile != null;
                 studentEmailSt = profile.getEmail();
                 studentPhoneSt = profile.getPhone();
@@ -59,28 +56,6 @@ public class AdminRequestBookActivity extends AppCompatActivity {
                 studentFacultySt = profile.getFaculty();
                 studentProfilePicture = profile.getPicture();
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        requestRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                AddBookClass approveBook = snapshot.getValue(AddBookClass.class);
-                assert approveBook != null;
-                bookNameSt = approveBook.getBookName();
-                authorNameSt = approveBook.getAuthorName();
-                bookPageSt = approveBook.getPage();
-                bookEditionSt = approveBook.getEdition();
-                bookQuantitySt = approveBook.getQuantity();
-                bookDepartmentSt = approveBook.getDepartment();
-                bookPositionSt = approveBook.getPosition();
-            }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
@@ -179,7 +154,6 @@ public class AdminRequestBookActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         database = FirebaseDatabase.getInstance("https://library-management-8d07f-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        mAuth = FirebaseAuth.getInstance();
 
         //-------------Initialization Section--------------
         studentName = findViewById(R.id.adminRqstStudentName);
@@ -198,17 +172,24 @@ public class AdminRequestBookActivity extends AppCompatActivity {
         authorNameSt = getIntent().getStringExtra("authorName");
         studentNameSt = getIntent().getStringExtra("studentName");
         studentIdSt = getIntent().getStringExtra("studentId");
-//        studentEmailSt = getIntent().getStringExtra("studentEmail");
-//        studentPhoneSt = getIntent().getStringExtra("studentPhone");
-//        studentDepartmentSt = getIntent().getStringExtra("studentDepartment");
+        bookEditionSt = getIntent().getStringExtra("bookEdition");
+        bookPositionSt = getIntent().getStringExtra("bookPosition");
+        bookQuantitySt = getIntent().getStringExtra("bookQuantity");
+        bookPageSt = getIntent().getStringExtra("bookPage");
+        bookDepartmentSt = getIntent().getStringExtra("bookDepartment");
         bookIdSt = getIntent().getStringExtra("bookId");
         userIdSt = getIntent().getStringExtra("userId");
+
 
         //----------------set value to the textView-----------------
         studentName.setText(studentNameSt);
         studentId.setText(studentIdSt);
         bookName.setText(bookNameSt);
         authorName.setText(authorNameSt);
+        edition.setText(bookEditionSt);
+        quantity.setText(bookQuantitySt);
+        position.setText(bookPositionSt);
+
     }
 
 

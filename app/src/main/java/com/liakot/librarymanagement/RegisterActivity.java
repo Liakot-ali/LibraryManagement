@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -188,6 +190,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 confirmPassword.clearFocus();
                             }
                             else{
+
+                                //------------- for hide the keyboard------
+                                InputMethodManager methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                methodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                                 //---------------- create new user with email and password-------------
                                 mAuth.createUserWithEmailAndPassword(emailSt,passwordSt)

@@ -44,11 +44,9 @@ public class AdminRequestListActivity extends AppCompatActivity {
 
         Initialize();
 
-        String userId = mAuth.getUid();
-        assert userId != null;
-        DatabaseReference myRef = database.getReference("Admin").child("RequestList");
+        DatabaseReference requestListRef = database.getReference("Admin").child("RequestList");
         //-------------retrieve value from firebase to ArrayList-------------
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        requestListRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap : snapshot.getChildren())
@@ -76,14 +74,18 @@ public class AdminRequestListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 RequestBookClass newBook = arrayList.get(position);
-                String bookName, authorName, studentName, studentId, studentEmail, studentPhone, studentDepartment, bookId, userId;
+                String bookName, authorName, studentName, studentId, bookEdition, bookQuantity, bookPosition, bookPage, bookDepartment, bookId, userId;
+
+
                 bookName = newBook.getBookName();
                 authorName = newBook.getAuthorName();
                 studentName = newBook.getStudentName();
                 studentId = newBook.getStudentId();
-                studentEmail = newBook.getStudentEmail();
-                studentPhone = newBook.getStudentPhone();
-                studentDepartment = newBook.getStudentDepartment();
+                bookEdition = newBook.getBookEdition();
+                bookPosition = newBook.getBookPosition();
+                bookQuantity = newBook.getBookQuantity();
+                bookPage = newBook.getBookPage();
+                bookDepartment = newBook.getBookDepartment();
                 bookId = newBook.getBookId();
                 userId = newBook.getUserId();
 
@@ -91,11 +93,13 @@ public class AdminRequestListActivity extends AppCompatActivity {
                 Intent intent = new Intent(AdminRequestListActivity.this, AdminRequestBookActivity.class);
                 intent.putExtra("bookName", bookName);
                 intent.putExtra("authorName", authorName);
-                intent.putExtra("studentEmail", studentEmail);
                 intent.putExtra("studentName", studentName);
-                intent.putExtra("studentDepartment", studentDepartment);
                 intent.putExtra("studentId", studentId);
-                intent.putExtra("studentPhone", studentPhone);
+                intent.putExtra("bookEdition", bookEdition);
+                intent.putExtra("bookPosition", bookPosition);
+                intent.putExtra("bookQuantity", bookQuantity);
+                intent.putExtra("bookPage", bookPage);
+                intent.putExtra("bookDepartment", bookDepartment);
                 intent.putExtra("bookId", bookId);
                 intent.putExtra("userId", userId);
                 startActivity(intent);

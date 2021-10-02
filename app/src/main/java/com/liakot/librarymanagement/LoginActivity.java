@@ -3,9 +3,12 @@ package com.liakot.librarymanagement;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     String studentIDSt, passwordSt;
     FirebaseDatabase database;
     FirebaseAuth mAuth;
-
     
     
 
@@ -116,6 +118,10 @@ public class LoginActivity extends AppCompatActivity {
                                     studentId.clearFocus();
                                 }
                                 else{
+                                    //------------- for hide the keyboard------
+                                    InputMethodManager methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    methodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
                                     studentId.clearFocus();
                                     password.clearFocus();
                                     mAuth.signInWithEmailAndPassword(emailSt, passwordSt)

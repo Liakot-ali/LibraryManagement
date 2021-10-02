@@ -47,7 +47,7 @@ public class BookActivity extends AppCompatActivity {
                 String uniqueId = UUID.randomUUID().toString();
                 assert userId != null;
                 DatabaseReference studentProfileRef = database.getReference("Student").child("User").child(userId).child("Profile");
-                DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("PendingList").child(uniqueId);
+                DatabaseReference pendingRef = database.getReference("Student").child("User").child(userId).child("PendingList").child(uniqueId);
                 DatabaseReference adminRef = database.getReference("Admin").child("RequestList").child(uniqueId);
 
                 //------------- add the book to the pending List-------------
@@ -56,25 +56,28 @@ public class BookActivity extends AppCompatActivity {
                 RequestBookClass newRequestBook = new RequestBookClass();
                 newRequestBook.setBookName(bookNameSt);
                 newRequestBook.setAuthorName(authorNameSt);
+                newRequestBook.setBookEdition(editionSt);
+                newRequestBook.setBookPosition(positionSt);
+                newRequestBook.setBookQuantity(quantitySt);
+                newRequestBook.setBookPage(pageSt);
+                newRequestBook.setBookDepartment(departmentSt);
                 newRequestBook.setBookId(uniqueId);
                 newRequestBook.setUserId(userId);
+
                 studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         UserProfileClass userProfile = snapshot.getValue(UserProfileClass.class);
                         assert userProfile != null;
-                        newRequestBook.setStudentName(userProfile.getFirstName()+ " " + userProfile.getLastName());
+                        newRequestBook.setStudentName(userProfile.getFirstName() + " " + userProfile.getLastName());
                         newRequestBook.setStudentId(userProfile.getStudentId());
-                        newRequestBook.setStudentEmail(userProfile.getEmail());
-                        newRequestBook.setStudentPhone(userProfile.getPhone());
-                        newRequestBook.setStudentDepartment(userProfile.getDepartment());
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
-                myRef.setValue(requestBook).addOnCompleteListener(task -> {
+                pendingRef.setValue(requestBook).addOnCompleteListener(task -> {
                     adminRef.setValue(newRequestBook).addOnCompleteListener(task1 -> {
                         if (task1.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "The book needs to be approved by librarian", Toast.LENGTH_SHORT).show();
@@ -93,10 +96,10 @@ public class BookActivity extends AppCompatActivity {
             String userId = mAuth.getUid();
             String uniqueId = UUID.randomUUID().toString();
             assert userId != null;
-            DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("NextList").child(uniqueId);
+            DatabaseReference nextRef = database.getReference("Student").child("User").child(userId).child("NextList").child(uniqueId);
             //--------------- add the book to the nextList ------------------
             AddBookClass nextBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
-            myRef.setValue(nextBook).addOnCompleteListener(task -> {
+            nextRef.setValue(nextBook).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "The book is added to your Next List", Toast.LENGTH_SHORT).show();
                 } else {
@@ -132,10 +135,11 @@ public class BookActivity extends AppCompatActivity {
         authorNameSt = getIntent().getStringExtra("authorName");
         editionSt = getIntent().getStringExtra("edition");
         pageSt = getIntent().getStringExtra("page");
+        departmentSt = getIntent().getStringExtra("department");
         quantitySt = getIntent().getStringExtra("quantity");
         positionSt = getIntent().getStringExtra("position");
 
-        //----------------set value to the texrView-----------------
+        //----------------set value to the textView-----------------
         bookName.setText(bookNameSt);
         authorName.setText(authorNameSt);
         edition.setText(editionSt);

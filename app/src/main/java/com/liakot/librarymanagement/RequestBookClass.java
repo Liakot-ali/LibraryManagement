@@ -1,25 +1,26 @@
 package com.liakot.librarymanagement;
 
 public class RequestBookClass {
-    private String bookName, authorName, studentName, studentId, studentEmail, studentPhone, studentDepartment, bookId, userId;
+    private String bookName, authorName, studentName, studentId, bookEdition, bookPosition, bookQuantity, BookPage, bookDepartment, bookId, userId;
 
     public  RequestBookClass()
     {
 
     }
 
-    public RequestBookClass(String bookName, String authorName, String studentName, String studentId, String studentEmail, String studentPhone, String studentDepartment, String bookId, String userId) {
+    public RequestBookClass(String bookName, String authorName, String studentName, String studentId, String bookEdition, String bookPosition, String bookQuantity, String bookPage, String bookDepartment, String bookId, String userId) {
         this.bookName = bookName;
         this.authorName = authorName;
         this.studentName = studentName;
         this.studentId = studentId;
-        this.studentEmail = studentEmail;
-        this.studentPhone = studentPhone;
-        this.studentDepartment = studentDepartment;
+        this.bookEdition = bookEdition;
+        this.bookPosition = bookPosition;
+        this.bookQuantity = bookQuantity;
+        this.BookPage = bookPage;
+        this.bookDepartment = bookDepartment;
         this.bookId = bookId;
         this.userId = userId;
     }
-
 
     public String getBookName() {
         return bookName;
@@ -53,28 +54,44 @@ public class RequestBookClass {
         this.studentId = studentId;
     }
 
-    public String getStudentEmail() {
-        return studentEmail;
+    public String getBookEdition() {
+        return bookEdition;
     }
 
-    public void setStudentEmail(String studentEmail) {
-        this.studentEmail = studentEmail;
+    public void setBookEdition(String bookEdition) {
+        this.bookEdition = bookEdition;
     }
 
-    public String getStudentPhone() {
-        return studentPhone;
+    public String getBookPosition() {
+        return bookPosition;
     }
 
-    public void setStudentPhone(String studentPhone) {
-        this.studentPhone = studentPhone;
+    public void setBookPosition(String bookPosition) {
+        this.bookPosition = bookPosition;
     }
 
-    public String getStudentDepartment() {
-        return studentDepartment;
+    public String getBookQuantity() {
+        return bookQuantity;
     }
 
-    public void setStudentDepartment(String studentDepartment) {
-        this.studentDepartment = studentDepartment;
+    public void setBookQuantity(String bookQuantity) {
+        this.bookQuantity = bookQuantity;
+    }
+
+    public String getBookPage() {
+        return BookPage;
+    }
+
+    public void setBookPage(String bookPage) {
+        BookPage = bookPage;
+    }
+
+    public String getBookDepartment() {
+        return bookDepartment;
+    }
+
+    public void setBookDepartment(String bookDepartment) {
+        this.bookDepartment = bookDepartment;
     }
 
     public String getBookId() {
