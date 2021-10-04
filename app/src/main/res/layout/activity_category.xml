@@ -1572,7 +1572,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/Physics"
+                            android:id="@+id/physics"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/inner_pad"
@@ -1843,7 +1843,7 @@
                                 android:gravity="center"
                                 android:lines="2"
                                 android:maxLines="2"
-                                android:text="Statistics"
+                                android:text="Development Studies"
                                 android:textColor="@color/black_color"
                                 android:textSize="@dimen/department_text" />
 

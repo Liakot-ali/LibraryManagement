@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,49 +27,47 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AdminRequestListActivity extends AppCompatActivity {
+public class AdminSubmitListActivity extends AppCompatActivity {
+
     Toolbar toolbar;
-    FirebaseAuth mAuth;
-    FirebaseDatabase database;
+    ListView returnList;
     ArrayList<RequestBookClass> arrayList;
-    ListView requestListView;
-    ProgressDialog progressDialog;
     BaseAdapter adapter;
+    FirebaseDatabase database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_request_list);
+        setContentView(R.layout.activity_admin_submit_list);
 
         Initialize();
 
-        DatabaseReference requestListRef = database.getReference("Admin").child("RequestList");
-        //-------------retrieve value from firebase to ArrayList-------------
-        requestListRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference returnRef = database.getReference("Admin").child("ReturnList");
+
+        returnRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren())
+                for (DataSnapshot snapshot1 : snapshot.getChildren())
                 {
-                    RequestBookClass newBook = snap.getValue(RequestBookClass.class);
-                    arrayList.add(newBook);
+                    RequestBookClass r = snapshot1.getValue(RequestBookClass.class);
+                    arrayList.add(r);
                 }
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Please Check your Internet connection",Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
 
-        //---------------Adapt value from arrayList to ListView--------------
         Adapter();
-        requestListView.setAdapter(adapter);
-        progressDialog.dismiss();
-
+        returnList.setAdapter(adapter);
 
         //---------------------for specific item click------------------
-        requestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        returnList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 RequestBookClass newBook = arrayList.get(position);
@@ -89,7 +86,7 @@ public class AdminRequestListActivity extends AppCompatActivity {
                 userId = newBook.getUserId();
 
 
-                Intent intent = new Intent(AdminRequestListActivity.this, AdminRequestBookActivity.class);
+                Intent intent = new Intent(AdminSubmitListActivity.this, AdminRequestBookActivity.class);
                 intent.putExtra("bookName", bookName);
                 intent.putExtra("authorName", authorName);
                 intent.putExtra("studentName", studentName);
@@ -105,8 +102,10 @@ public class AdminRequestListActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
+//----------Out of main section-------------
     private void Initialize() {
 
         //---------for back button----------
@@ -117,18 +116,11 @@ public class AdminRequestListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         database = FirebaseDatabase.getInstance("https://library-management-8d07f-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        mAuth = FirebaseAuth.getInstance();
 
-        progressDialog = new ProgressDialog(AdminRequestListActivity.this);
-        progressDialog.setTitle("Please Wait");
-        progressDialog.setMessage("We working on your book..");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        //-------Initialization section--------
 
-        //------------Initialization Section--------
-        requestListView = findViewById(R.id.adminRequestListView);
+        returnList = findViewById(R.id.adminReturnListView);
         arrayList = new ArrayList<>();
-
     }
 
     //------------Adapter all work----------
@@ -174,6 +166,7 @@ public class AdminRequestListActivity extends AppCompatActivity {
         };
     }
 
+
     //---------for back to home-------------
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -182,4 +175,5 @@ public class AdminRequestListActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

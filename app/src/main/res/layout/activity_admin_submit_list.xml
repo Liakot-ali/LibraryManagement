@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DepartmentActivity">
+    tools:context=".AdminSubmitListActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,11 +54,9 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Department Name"
+                    android:text="Return List"
                     android:textColor="@color/toolbar_text_color"
                     android:textIsSelectable="true"
-                    android:maxLines="1"
-                    android:ellipsize="end"
                     android:textSize="@dimen/toolbar_text" />
 
 
@@ -68,33 +66,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <ListView
+                android:id="@+id/adminReturnListView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/lay_pad"
-                android:background="@drawable/search_box"
-                android:orientation="vertical">
-
-                <SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ListView
-                    android:id="@+id/departmentListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
+                android:layout_height="match_parent" />
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

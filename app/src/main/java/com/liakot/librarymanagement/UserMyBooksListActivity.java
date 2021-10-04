@@ -10,10 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserMyBooksListActivity extends AppCompatActivity {
 
@@ -21,6 +27,7 @@ public class UserMyBooksListActivity extends AppCompatActivity {
     TextView bookName, authorName, edition, remainingTime, position;
     Button increaseTimeBtn, returnBtn, contactBtn;
     String bookNameSt, authorNameSt, editionSt, remainingTimeSt, positionSt, pageSt, quantitySt, bookId, departmentSt;
+    String studentName, studentId;
     FirebaseDatabase database ;
     FirebaseAuth mAuth;
 
@@ -51,9 +58,118 @@ public class UserMyBooksListActivity extends AppCompatActivity {
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference returnRef = database.getReference("Admin").child("ReturnList");
-                //TODO
 
+                DatabaseReference returnRef = database.getReference("Admin").child("ReturnList").child(bookId);
+                String userId = mAuth.getUid();
+                assert userId != null;
+                DatabaseReference profileRef = database.getReference("Student").child("User").child(userId).child("Profile");
+                DatabaseReference returnPendingRef = database.getReference("Student").child("User").child(userId).child("ReturnList").child(bookId);
+                DatabaseReference myBooksRef = database.getReference("Student").child("User").child(userId).child("MyBooks").child(bookId);
+
+                RequestBookClass newReturn = new RequestBookClass();
+
+                profileRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        UserProfileClass profile = snapshot.getValue(UserProfileClass.class);
+                        assert profile != null;
+                        newReturn.setStudentName(profile.getFirstName() + " " + profile.getLastName());
+                        newReturn.setStudentId(profile.getStudentId());
+
+                        AddBookClass newPendingBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, bookId);
+//                newReturn = new RequestBookClass(bookNameSt, authorNameSt, studentName, studentId, editionSt, positionSt, quantitySt, pageSt, departmentSt, bookId, userId);
+
+                        newReturn.setBookName(bookNameSt);
+                        newReturn.setAuthorName(authorNameSt);
+                        newReturn.setBookEdition(editionSt);
+                        newReturn.setBookPosition(positionSt);
+                        newReturn.setBookQuantity(quantitySt);
+                        newReturn.setBookPage(pageSt);
+                        newReturn.setBookDepartment(departmentSt);
+                        newReturn.setBookId(bookId);
+                        newReturn.setUserId(userId);
+
+                        returnRef.setValue(newReturn).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                returnPendingRef.setValue(newPendingBook).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()) {
+                                            myBooksRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Toast.makeText(getApplicationContext(), "Return request sent. Check this in your pending list", Toast.LENGTH_SHORT).show();
+                                                        Intent intent = new Intent(UserMyBooksListActivity.this, MyBooksActivity.class);
+                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    } else {
+                                                        Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+//                AddBookClass newPendingBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, bookId);
+////                newReturn = new RequestBookClass(bookNameSt, authorNameSt, studentName, studentId, editionSt, positionSt, quantitySt, pageSt, departmentSt, bookId, userId);
+//
+//                newReturn.setBookName(bookNameSt);
+//                newReturn.setAuthorName(authorNameSt);
+//                newReturn.setBookEdition(editionSt);
+//                newReturn.setBookPosition(positionSt);
+//                newReturn.setBookQuantity(quantitySt);
+//                newReturn.setBookPage(pageSt);
+//                newReturn.setBookDepartment(departmentSt);
+//                newReturn.setBookId(bookId);
+//                newReturn.setUserId(userId);
+//
+//                returnRef.setValue(newReturn).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        returnPendingRef.setValue(newPendingBook).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                if(task.isSuccessful()) {
+//                                    myBooksRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if (task.isSuccessful()) {
+//                                                Toast.makeText(getApplicationContext(), "Return request sent. Check this in your pending list", Toast.LENGTH_SHORT).show();
+//                                                Intent intent = new Intent(UserMyBooksListActivity.this, MyBooksActivity.class);
+//                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                                startActivity(intent);
+//                                                finish();
+//                                            } else {
+//                                                Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+//                                            }
+//                                        }
+//                                    });
+//                                }
+//                                else {
+//                                    Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+//                    }
+//                });
             }
         });
     }

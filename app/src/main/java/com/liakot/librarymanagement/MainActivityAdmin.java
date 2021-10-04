@@ -36,6 +36,13 @@ public class MainActivityAdmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        submitList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivityAdmin.this, AdminSubmitListActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

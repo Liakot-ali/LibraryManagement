@@ -43,6 +43,7 @@ public class BookActivity extends AppCompatActivity {
         //TODO
         requestBtn.setOnClickListener(view -> {
             if (!quantitySt.equals("0")) {
+
                 String userId = mAuth.getUid();
                 String uniqueId = UUID.randomUUID().toString();
                 assert userId != null;
@@ -52,18 +53,9 @@ public class BookActivity extends AppCompatActivity {
 
                 //------------- add the book to the pending List-------------
                 AddBookClass requestBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
+
                 //-----------add the book and student details in admin Request List--------
                 RequestBookClass newRequestBook = new RequestBookClass();
-                newRequestBook.setBookName(bookNameSt);
-                newRequestBook.setAuthorName(authorNameSt);
-                newRequestBook.setBookEdition(editionSt);
-                newRequestBook.setBookPosition(positionSt);
-                newRequestBook.setBookQuantity(quantitySt);
-                newRequestBook.setBookPage(pageSt);
-                newRequestBook.setBookDepartment(departmentSt);
-                newRequestBook.setBookId(uniqueId);
-                newRequestBook.setUserId(userId);
-
                 studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -71,20 +63,30 @@ public class BookActivity extends AppCompatActivity {
                         assert userProfile != null;
                         newRequestBook.setStudentName(userProfile.getFirstName() + " " + userProfile.getLastName());
                         newRequestBook.setStudentId(userProfile.getStudentId());
+                        newRequestBook.setBookName(bookNameSt);
+                        newRequestBook.setAuthorName(authorNameSt);
+                        newRequestBook.setBookEdition(editionSt);
+                        newRequestBook.setBookPosition(positionSt);
+                        newRequestBook.setBookQuantity(quantitySt);
+                        newRequestBook.setBookPage(pageSt);
+                        newRequestBook.setBookDepartment(departmentSt);
+                        newRequestBook.setBookId(uniqueId);
+                        newRequestBook.setUserId(userId);
+
+                        pendingRef.setValue(requestBook).addOnCompleteListener(task -> {
+                            adminRef.setValue(newRequestBook).addOnCompleteListener(task1 -> {
+                                if (task1.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "The book needs to be approved by librarian", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        });
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
-                });
-                pendingRef.setValue(requestBook).addOnCompleteListener(task -> {
-                    adminRef.setValue(newRequestBook).addOnCompleteListener(task1 -> {
-                        if (task1.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "The book needs to be approved by librarian", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
-                        }
-                    });
                 });
             } else {
                 Toast.makeText(getApplicationContext(), "This book is not available now. Add it to next list", Toast.LENGTH_SHORT).show();
