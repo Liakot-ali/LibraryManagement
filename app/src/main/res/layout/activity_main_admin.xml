@@ -100,7 +100,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
                             android:orientation="horizontal"
                             android:padding="@dimen/lay_pad">
 
@@ -116,15 +115,17 @@
                                     android:id="@+id/adminAddNewBook"
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_add_new_book_24dp"
                                     tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:id="@+id/textView"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="New Book"
+                                    android:gravity="center"
                                     android:textColor="@color/normal_text_color"
                                     android:textSize="@dimen/normal_text" />
                             </LinearLayout>
@@ -142,16 +143,47 @@
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
                                     android:layout_weight="1"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_next_list_24dp"
                                     tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:id="@+id/textView2"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="Increase Size"
+                                    android:gravity="center"
+                                    android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/normal_text" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="@dimen/inner_pad">
+
+                                <ImageView
+                                    android:id="@+id/adminAddContact"
+                                    android:layout_width="@dimen/image_button"
+                                    android:layout_height="@dimen/image_button"
+                                    android:layout_weight="1"
+                                    android:padding="@dimen/text_pad"
+                                    android:background="@android:drawable/dialog_holo_light_frame"
+                                    app:srcCompat="@drawable/icon_add_contacts"
+                                    tools:ignore="VectorDrawableCompat" />
+
+                                <TextView
+                                    android:id="@+id/textVidfew2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Add Contact"
+                                    android:gravity="center"
                                     android:textColor="@color/normal_text_color"
                                     android:textSize="@dimen/normal_text" />
                             </LinearLayout>
@@ -161,7 +193,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:orientation="horizontal"
                             android:padding="@dimen/lay_pad">
 
@@ -178,6 +209,7 @@
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
                                     android:layout_weight="1"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_pending_request_24dp"
                                     tools:ignore="VectorDrawableCompat" />
@@ -205,6 +237,7 @@
                                     android:id="@+id/adminSubmitList"
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_request_list_24dp"
                                     tools:ignore="VectorDrawableCompat" />

@@ -86,14 +86,14 @@ public class AdminSubmitListActivity extends AppCompatActivity {
                 userId = newBook.getUserId();
 
 
-                Intent intent = new Intent(AdminSubmitListActivity.this, AdminRequestBookActivity.class);
+                Intent intent = new Intent(AdminSubmitListActivity.this, AdminSubmitBookActivity.class);
                 intent.putExtra("bookName", bookName);
                 intent.putExtra("authorName", authorName);
                 intent.putExtra("studentName", studentName);
                 intent.putExtra("studentId", studentId);
                 intent.putExtra("bookEdition", bookEdition);
                 intent.putExtra("bookPosition", bookPosition);
-                intent.putExtra("bookQuantity", bookQuantity);
+                intent.putExtra("bookQuantity", bookQuantity);      //---Missing bookRemaining Time
                 intent.putExtra("bookPage", bookPage);
                 intent.putExtra("bookDepartment", bookDepartment);
                 intent.putExtra("bookId", bookId);

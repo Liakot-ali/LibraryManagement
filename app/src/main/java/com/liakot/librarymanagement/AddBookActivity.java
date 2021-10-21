@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,7 +28,8 @@ import java.util.UUID;
 
 public class AddBookActivity extends AppCompatActivity {
 
-    EditText bookName, authorName, edition, totalPage, department, quantity, position;
+    AutoCompleteTextView department, position;
+    EditText bookName, authorName, edition, totalPage, quantity;
     Button addBtn;
     Toolbar toolbar;
 
@@ -53,7 +56,7 @@ public class AddBookActivity extends AppCompatActivity {
             editionSt = edition.getText().toString();
             pageSt = totalPage.getText().toString();
             departmentSt = department.getText().toString();
-            quantitySt = quantity.getText().toString();
+            quantitySt = quantity.getText().toString() + " Books";
             positionSt = position.getText().toString();
 
             String bookId = UUID.randomUUID().toString();
@@ -112,6 +115,14 @@ public class AddBookActivity extends AppCompatActivity {
         quantity = findViewById(R.id.addBookQuantity);
         position= findViewById(R.id.addBookPosition);
         addBtn = findViewById(R.id.addBookAddBtn);
+
+        String[]  departmentArray = getResources().getStringArray(R.array.department);
+        ArrayAdapter<String> departmentAdapter = new ArrayAdapter<>(this, R.layout.custom_department_view, R.id.departmentName, departmentArray);
+        department.setAdapter(departmentAdapter);
+
+        String[] positionArray = getResources().getStringArray(R.array.position);
+        ArrayAdapter<String> positionAdapter = new ArrayAdapter<>(this, R.layout.custom_department_view, R.id.departmentName, positionArray);
+        position.setAdapter(positionAdapter);
     }
 
     //---------for back to home-------------

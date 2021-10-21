@@ -23,6 +23,7 @@ public class CategoryActivity extends AppCompatActivity {
     LinearLayout AIE, FPP, FET, FSN, architecture, CE, ME;
     LinearLayout chemistry, physics, math, statistics;
     LinearLayout english, economics, sociology, development;
+    LinearLayout postgraduate, liberationWar, others;
 
 
     @Override
@@ -36,7 +37,6 @@ public class CategoryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
 
         //------------Initialization Section-------------
@@ -100,6 +100,11 @@ public class CategoryActivity extends AppCompatActivity {
         economics = findViewById(R.id.economics);
         sociology = findViewById(R.id.sociology);
         development = findViewById(R.id.developmentStudies);
+
+        //------------Others---------
+        postgraduate = findViewById(R.id.postgraduateStudies);
+        liberationWar = findViewById(R.id.liberationWar);
+        others = findViewById(R.id.others);
 
 
         //--------------On Click Section----------------
@@ -475,6 +480,32 @@ public class CategoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, DepartmentActivity.class);
                 intent.putExtra("department", "Development Studies");
+                startActivity(intent);
+            }
+        });
+
+        //-------------------Others---------
+        postgraduate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, DepartmentActivity.class);
+                intent.putExtra("department", "Postgraduate");
+                startActivity(intent);
+            }
+        });
+        liberationWar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, DepartmentActivity.class);
+                intent.putExtra("department", "Liberation War");
+                startActivity(intent);
+            }
+        });
+        others.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, DepartmentActivity.class);
+                intent.putExtra("department", "Others");
                 startActivity(intent);
             }
         });

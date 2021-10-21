@@ -104,6 +104,7 @@ public class BookActivity extends AppCompatActivity {
             nextRef.setValue(nextBook).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "The book is added to your Next List", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Something went wrong. Please try again", Toast.LENGTH_SHORT).show();
                 }

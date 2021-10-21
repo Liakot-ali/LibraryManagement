@@ -227,13 +227,14 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/addBookDepartment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/edit_text_style40"
                             android:hint="Department"
-                            android:inputType="textMultiLine"
+                            android:completionHint="Select a department"
+                            android:completionThreshold="0"
                             android:padding="@dimen/editTextPad" />
                     </LinearLayout>
 
@@ -293,13 +294,14 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/addBookPosition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/edit_text_style40"
                             android:hint="Position in Library"
-                            android:inputType="textMultiLine"
+                            android:completionHint="Select book position"
+                            android:completionThreshold="0"
                             android:padding="@dimen/editTextPad" />
                     </LinearLayout>
 

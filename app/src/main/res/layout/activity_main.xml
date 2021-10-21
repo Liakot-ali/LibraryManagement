@@ -100,7 +100,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
                             android:orientation="horizontal"
                             android:padding="@dimen/lay_pad">
 
@@ -116,6 +115,7 @@
                                     android:id="@+id/homeSearchBook"
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_search_24dp"
                                     tools:ignore="VectorDrawableCompat" />
@@ -142,6 +142,7 @@
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
                                     android:layout_weight="1"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_category_24dp"
                                     tools:ignore="VectorDrawableCompat" />
@@ -168,6 +169,7 @@
                                     android:id="@+id/homeContacts"
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_contacts_24dp"
                                     tools:ignore="VectorDrawableCompat" />
@@ -186,7 +188,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:orientation="horizontal"
                             android:padding="@dimen/lay_pad">
 
@@ -202,6 +203,7 @@
                                     android:id="@+id/homeMyBooks"
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_my_book_list_24dp"
                                     tools:ignore="VectorDrawableCompat" />
@@ -229,6 +231,7 @@
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
                                     android:layout_weight="1"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_request_list_24dp"
                                     tools:ignore="VectorDrawableCompat" />
@@ -256,6 +259,7 @@
                                     android:id="@+id/homeNextBook"
                                     android:layout_width="@dimen/image_button"
                                     android:layout_height="@dimen/image_button"
+                                    android:padding="@dimen/text_pad"
                                     android:background="@android:drawable/dialog_holo_light_frame"
                                     app:srcCompat="@drawable/icon_next_list_24dp"
                                     tools:ignore="VectorDrawableCompat" />

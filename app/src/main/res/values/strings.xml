@@ -1,5 +1,93 @@
 <resources>
     <string name="app_name">Library Management</string>
+    <string-array name="department">
+
+        //-----------Faculty of Agriculture-------------------
+        <item>Agronomy</item>
+        <item>Horticulture</item>
+        <item>Soil Science</item>
+        <item>Entomology</item>
+        <item>Plant Pathology</item>
+        <item>Genetics &amp; Plant Breeding</item>
+        <item>Crop Physiology &amp; Ecology</item>
+        <item>Agricultural Extension</item>
+        <item>Agricultural Chemistry</item>
+        <item>Biochemistry &amp; Molecular Biology</item>
+
+        //-----------Faculty of CSE-------------
+        <item>Computer Science &amp; Engineering</item>
+        <item>Electrical &amp; Electronic Engineering</item>
+        <item>Electronics &amp; Communication Engineering</item>
+
+        //-----------Faculty of Business Studies------------
+        <item>Accounting</item>
+        <item>Finance &amp; Banking</item>
+        <item>Management</item>
+        <item>Marketing</item>
+
+        //-------------Faculty of Fisheries----------
+        <item>Fisheries Biology &amp; Genetics</item>
+        <item>Fisheries Management</item>
+        <item>Fisheries Technology</item>
+        <item>Aquaculture</item>
+
+        //-----------Faculty of Vaterinary &amp; Animal Science--------
+        <item>Microbiology</item>
+        <item>Pathology &amp; Parasitology</item>
+        <item>Dairy &amp; Poultry Science</item>
+        <item>Anatomy &amp; Histology</item>
+        <item>General Animal Science &amp; Nutrition</item>
+        <item>Genetics &amp; Animal Breeding</item>
+        <item>Medicine, Surgery &amp; Obstetrics</item>
+        <item>Physiology &amp; Pharmacology</item>
+
+        //-------------Faculty of Engineering-------------
+        <item>Agricultural &amp; Industrial Engineering</item>
+        <item>Food Processing &amp; Preservation</item>
+        <item>Food Engineering &amp; Technology</item>
+        <item>Food Science &amp; Nutrition</item>
+        <item>Architecture</item>
+        <item>Civil Engineering</item>
+        <item>Mechanical Engineering</item>
+
+        //------------Faculty of Science--------
+        <item>Chemistry</item>
+        <item>Physics</item>
+        <item>Mathematics</item>
+        <item>Statistics</item>
+
+        //----------Faculty of Social Science &amp; Humanities---------
+        <item>English</item>
+        <item>Economics</item>
+        <item>Sociology</item>
+        <item>Development Studies</item>
+
+        //----------Others---------
+        <item>Postgraduate</item>
+        <item>Liberation War</item>
+        <item>Others</item>
+
+    </string-array>
+    <string-array name="position">
+        <item>Ground floor, 1st Shelf, first row</item>
+        <item>Ground floor, 1st Shelf, middle row</item>
+        <item>Ground floor, 1st Shelf, last row</item>
+        <item>Ground floor, 2nd Shelf, first row</item>
+        <item>Ground floor, 2nd Shelf, middle row</item>
+        <item>Ground floor, 2nd Shelf, last row</item>
+        <item>Ground floor, 3rd Shelf, first row</item>
+        <item>Ground floor, 3rd Shelf, middle row</item>
+        <item>Ground floor, 3rd Shelf, last row</item>
+        <item>First floor, 1st Shelf, first row</item>
+        <item>First floor, 1st Shelf, middle row</item>
+        <item>First floor, 1st Shelf, last row</item>
+        <item>First floor, 2nd Shelf, first row</item>
+        <item>First floor, 2nd Shelf, middle row</item>
+        <item>First floor, 2nd Shelf, last row</item>
+        <item>First floor, 3rd Shelf, first row</item>
+        <item>First floor, 3rd Shelf, middle row</item>
+        <item>First floor, 3rd Shelf, last row</item>
+    </string-array>
 
     <dimen name="toolbar_text">25sp</dimen>
     <dimen name="normal_text">20sp</dimen>

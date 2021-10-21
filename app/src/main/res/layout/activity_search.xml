@@ -79,12 +79,13 @@
                     android:id="@+id/searchSearchBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:background="@drawable/search_box"
-                    android:padding="@dimen/text_pad"
-                    android:inputType="textPersonName"
+                    android:ems="10"
                     android:foregroundGravity="right|center"
-                    android:hint="Search Here" />
+                    android:hint="Search Here"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/text_pad"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 

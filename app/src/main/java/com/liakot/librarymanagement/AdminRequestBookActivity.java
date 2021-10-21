@@ -27,7 +27,6 @@ public class AdminRequestBookActivity extends AppCompatActivity {
     TextView studentName, studentId, bookName, authorName, quantity, edition, position;
     Button approveBtn, denyBtn, contactBtn;
     FirebaseDatabase database;
-    FirebaseAuth mAuth;
     String bookNameSt, authorNameSt, studentProfilePicture, studentNameSt, studentIdSt, studentEmailSt, studentPhoneSt, studentDepartmentSt, studentFacultySt, bookIdSt, userIdSt;
     String bookPageSt, bookEditionSt, bookPositionSt, bookQuantitySt, bookDepartmentSt;
 
@@ -48,7 +47,6 @@ public class AdminRequestBookActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserProfileClass profile = snapshot.getValue(UserProfileClass.class);
-
                 assert profile != null;
                 studentEmailSt = profile.getEmail();
                 studentPhoneSt = profile.getPhone();

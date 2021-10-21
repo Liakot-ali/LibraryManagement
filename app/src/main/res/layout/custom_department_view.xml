@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/departmentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/text_pad"
+        android:text="Department"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/normal_text"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_border"
+        android:layout_marginLeft="@dimen/text_pad"
+        android:layout_marginRight="@dimen/text_pad"
+        android:background="@color/buttonColor"/>
+
+</LinearLayout>

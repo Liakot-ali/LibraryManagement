@@ -3,6 +3,7 @@ package com.liakot.librarymanagement;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -89,14 +90,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // --TODO---------- implement sharedPreferences ----
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+
+                dialog.setIcon(R.drawable.icon_sign_out_24dp);
+                dialog.setTitle("Are you sure?");
+                dialog.setMessage("Do you want to log out?");
+
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+                dialog.setNegativeButton("No", null);
+                dialog.show();
             }
         });
     }
