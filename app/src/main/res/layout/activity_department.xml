@@ -73,12 +73,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/lay_pad"
-                android:background="@drawable/search_box"
                 android:orientation="vertical">
 
-                <SearchView
+                <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/search_box"
+                    android:ems="10"
+                    android:foregroundGravity="right|center"
+                    android:hint="Search Here"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/text_pad"
+                    tools:ignore="TouchTargetSizeCheck"/>
             </LinearLayout>
 
             <LinearLayout

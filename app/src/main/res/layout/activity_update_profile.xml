@@ -98,6 +98,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
+                                    android:padding="@dimen/text_pad"
                                     android:orientation="horizontal">
 
                                     <de.hdodenhof.circleimageview.CircleImageView
@@ -316,7 +317,7 @@
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/edit_text_style40"
                                             android:hint="Faculty"
-                                            android:inputType="textPassword"
+                                            android:inputType="text"
                                             android:padding="@dimen/editTextPad"
                                             tools:ignore="TouchTargetSizeCheck" />
 
@@ -337,7 +338,7 @@
                                             android:layout_marginTop="@dimen/inner_pad"
                                             android:background="@drawable/edit_text_style40"
                                             android:hint="Department"
-                                            android:inputType="textPassword"
+                                            android:inputType="text"
                                             android:padding="@dimen/editTextPad" />
                                     </LinearLayout>
 

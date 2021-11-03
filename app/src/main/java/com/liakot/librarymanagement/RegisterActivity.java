@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ import com.google.firebase.database.ThrowOnExtraProperties;
 import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    ProgressDialog dialog;
 
     Toolbar toolbar;
     EditText firstName, lastName, studentId, email, passWord, confirmPassword;
@@ -148,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
                     confirmPassword.requestFocus();
                 }
                 else {
-
+                    dialog.show();
                     DatabaseReference myRef = database.getReference("Student").child("UserDetails");
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -171,6 +174,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             if(!indEmail)
                             {
+                                dialog.dismiss();
                                 firstName.clearFocus();
                                 lastName.clearFocus();
                                 studentId.clearFocus();
@@ -181,6 +185,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             else if(!indId)
                             {
+                                dialog.dismiss();
                                 studentId.setError("This Student Id is already registered");
                                 studentId.requestFocus();
                                 firstName.clearFocus();
@@ -190,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 confirmPassword.clearFocus();
                             }
                             else{
-
+                                dialog.show();
                                 //------------- for hide the keyboard------
                                 InputMethodManager methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                                 methodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
@@ -204,7 +209,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         String userUniqueId = mAuth.getUid();
                                         //------------- add the data to App/Student/User/UserUniqueId/Profile------------------
                                         DatabaseReference profileRef = database.getReference("Student").child("User").child(userUniqueId).child("Profile");
-                                        UserProfileClass profile = new UserProfileClass(firstNameSt, lastNameSt, studentIdSt,emailSt, "", "", "", "",passwordSt);
+                                        UserProfileClass profile = new UserProfileClass(firstNameSt, lastNameSt, studentIdSt,emailSt, "", "", "", "", passwordSt, userUniqueId);
 
                                         profileRef.setValue(profile)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -219,6 +224,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if(task.isSuccessful()) {
+                                                            dialog.dismiss();
                                                             Toast.makeText(getApplicationContext(), "Successfully Registered", Toast.LENGTH_SHORT).show();
 
                                                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
@@ -228,6 +234,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                             finish();
                                                         }
                                                         else{
+                                                            dialog.dismiss();
                                                             Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
                                                         }
                                                     }
@@ -243,7 +250,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(getApplicationContext(),error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -285,6 +293,10 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.registerConfirmPassword);
         registerBtn = findViewById(R.id.registerRegisterBtn);
         gotoSignIn = findViewById(R.id.registerGotoSignIn);
+
+        dialog = new ProgressDialog(RegisterActivity.this);
+        dialog.setTitle("Please Wait");
+        dialog.setMessage("We are creating your account");
 
     }
     //---------for back to home-------------

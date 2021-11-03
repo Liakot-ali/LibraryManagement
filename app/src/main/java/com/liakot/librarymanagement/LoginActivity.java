@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
+    ProgressDialog dialog;
 
     Button logIn;
     TextView gotoRegister;
@@ -48,6 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         gotoRegister = findViewById(R.id.logInGotoRegister);
         studentId = findViewById(R.id.logInStudentID);
         password = findViewById(R.id.logInPassword);
+        dialog = new ProgressDialog(LoginActivity.this);
+        dialog.setTitle("Please Wait");
+        dialog.setMessage("Connecting to server..");
 
 
         //----------On Click Section-----------
@@ -88,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     //--------------For Student-----------------
                     else {
+                        dialog.show();
                         DatabaseReference myRef = database.getReference("Student").child("UserDetails");
                         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
@@ -107,17 +112,20 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                                 if (!valid)
                                 {
+                                    dialog.dismiss();
                                     studentId.setError("Not registered yet");
                                     studentId.requestFocus();
                                     password.clearFocus();
                                 }
                                 else if(!mainPass.equals(passwordSt))
                                 {
+                                    dialog.dismiss();
                                     password.setError("Password no match");
                                     password.requestFocus();
                                     studentId.clearFocus();
                                 }
                                 else{
+                                    dialog.show();
                                     //------------- for hide the keyboard------
                                     InputMethodManager methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                                     methodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
@@ -128,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                                             .addOnCompleteListener(task -> {
                                                 if(task.isSuccessful()){
 
+                                                    dialog.dismiss();
                                                     studentId.setText("");
                                                     password.setText("");
 
@@ -139,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     finish();
                                                 }
                                                 else{
+                                                    dialog.dismiss();
                                                     Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
                                                 }
 
@@ -148,6 +158,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
+                                dialog.dismiss();
                                 Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         });

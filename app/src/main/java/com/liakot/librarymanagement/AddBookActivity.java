@@ -103,7 +103,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(AddBookActivity.this);
         progressDialog.setTitle("Please Wait");
-        progressDialog.setMessage("We working on your book..");
+        progressDialog.setMessage("Adding to database..");
         progressDialog.setCancelable(false);
 
         //------------Initialization Section---------------
