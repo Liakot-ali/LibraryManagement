@@ -2,7 +2,7 @@ package com.liakot.librarymanagement;
 
 public class UserProfileClass {
 
-    private String firstName, lastName, studentId, email, phone, faculty, department, picture, password;
+    private String firstName, lastName, studentId, email, phone, faculty, department, picture, password, uniqueId;
 
     public UserProfileClass() {
 
@@ -25,6 +25,19 @@ public class UserProfileClass {
         this.department = department;
         this.picture = picture;
         this.password = password;
+    }
+
+    public UserProfileClass(String firstName, String lastName, String studentId, String email, String phone, String faculty, String department, String picture, String password, String uniqueId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.studentId = studentId;
+        this.email = email;
+        this.phone = phone;
+        this.faculty = faculty;
+        this.department = department;
+        this.picture = picture;
+        this.password = password;
+        this.uniqueId = uniqueId;
     }
 
     public String getFirstName() {
@@ -97,5 +110,13 @@ public class UserProfileClass {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
     }
 }

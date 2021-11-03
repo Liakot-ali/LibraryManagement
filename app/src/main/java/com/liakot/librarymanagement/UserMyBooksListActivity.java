@@ -52,6 +52,7 @@ public class UserMyBooksListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO
+                Toast.makeText(UserMyBooksListActivity.this, "Under Construction", Toast.LENGTH_SHORT).show();
             }
         });
 

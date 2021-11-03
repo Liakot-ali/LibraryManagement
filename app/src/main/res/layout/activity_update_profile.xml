@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UpdateProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarDemo"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/toolbar_background" />
+
+            <LinearLayout
+                android:id="@+id/toolbarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_marginLeft="@dimen/toolbarMargin"
+                android:layout_marginRight="@dimen/toolbarMargin"
+                android:orientation="horizontal">
+
+                <!--
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/admin_profilePicture"
+                    android:layout_width="60sp"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:padding="@dimen/inner_pad"
+                    android:src="@drawable/icon_user_profile_24dp"
+                    app:civ_border_color="@color/imageView_border_color"
+                    app:civ_border_width="@dimen/image_border"
+                    tools:ignore="VectorDrawableCompat" />
+
+                -->
+                <TextView
+                    android:id="@+id/toolbarTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Update Profile"
+                    android:textColor="@color/toolbar_text_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/toolbar_text" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        android:id="@+id/updateProfile"
+                                        android:layout_width="150sp"
+                                        android:layout_height="150sp"
+                                        android:src="@drawable/icon_user_profile_24dp" />
+
+                                    <Button
+                                        android:id="@+id/updateAddImage"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:padding="@dimen/text_pad"
+                                        android:layout_marginLeft="@dimen/lay_pad"
+                                        android:text="Add Image"
+                                        android:background="@drawable/button_style"
+                                        android:textColor="@color/white_color"
+                                        style="@android:style/Widget.Button.Small"
+                                        android:textSize="@dimen/button_text"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameLayout2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/lay_pad"
+                                android:padding="@dimen/lay_pad"
+                                android:background="@android:drawable/dialog_holo_light_frame">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/userName"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Name"
+                                        android:textColor="@color/blue_color"
+                                        android:textIsSelectable="true"
+                                        android:textSize="@dimen/normal_text"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <EditText
+                                            android:id="@+id/updateFirstName"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/edit_text_style40"
+                                            android:hint="first name.."
+                                            android:inputType="textPersonName"
+                                            android:padding="@dimen/editTextPad"
+                                            tools:ignore="TouchTargetSizeCheck" />
+
+                                        <EditText
+                                            android:id="@+id/updateLastName"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/inner_pad"
+                                            android:background="@drawable/edit_text_style40"
+                                            android:hint="last name"
+                                            android:inputType="text"
+                                            android:padding="@dimen/editTextPad"
+                                            tools:ignore="TouchTargetSizeCheck" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:id="@+id/frameLayout2g3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:padding="@dimen/lay_pad"
+                                android:background="@android:drawable/dialog_holo_light_frame">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/lakjfsfir"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Student ID"
+                                        android:textColor="@color/blue_color"
+                                        android:textIsSelectable="true"
+                                        android:textSize="@dimen/normal_text"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/updateStudentid"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:padding="@dimen/editTextPad"
+                                            android:textSize="@dimen/normal_text"
+                                            android:textColor="@color/normal_text_color"
+                                            android:text="1802035"/>
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/lakjfidfr"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Email"
+                                        android:textColor="@color/blue_color"
+                                        android:textIsSelectable="true"
+                                        android:textSize="@dimen/normal_text"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <EditText
+                                            android:id="@+id/updateEmail"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/normal_text"
+                                            android:textColor="@color/normal_text_color"
+                                            android:text="example123@gmail.com"/>
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/lakjfir"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Phone"
+                                        android:textColor="@color/blue_color"
+                                        android:textIsSelectable="true"
+                                        android:textSize="@dimen/normal_text"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <EditText
+                                            android:id="@+id/updatePhone"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/edit_text_style40"
+                                            android:hint="012345678901"
+                                            android:inputType="phone"
+                                            android:padding="@dimen/editTextPad"
+                                            tools:ignore="TouchTargetSizeCheck" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameLayout24"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="@dimen/lay_pad"
+                                android:background="@android:drawable/dialog_holo_light_frame">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textView23"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Faculty"
+                                        android:textColor="@color/blue_color"
+                                        android:textIsSelectable="true"
+                                        android:textSize="@dimen/normal_text"
+                                        tools:ignore="TouchTargetSizeCheck" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <EditText
+                                            android:id="@+id/updateFaculty"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/edit_text_style40"
+                                            android:hint="Faculty"
+                                            android:inputType="textPassword"
+                                            android:padding="@dimen/editTextPad"
+                                            tools:ignore="TouchTargetSizeCheck" />
+
+                                        <TextView
+                                            android:id="@+id/textView11"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Department"
+                                            android:textColor="@color/blue_color"
+                                            android:textIsSelectable="true"
+                                            android:textSize="@dimen/normal_text"
+                                            tools:ignore="TouchTargetSizeCheck" />
+
+                                        <EditText
+                                            android:id="@+id/updateDepartment"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/inner_pad"
+                                            android:background="@drawable/edit_text_style40"
+                                            android:hint="Department"
+                                            android:inputType="textPassword"
+                                            android:padding="@dimen/editTextPad" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </FrameLayout>
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/text_pad"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/updateBtn"
+                        style="@android:style/Widget.Button.Small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_style"
+                        android:text="Update"
+                        android:textColor="@color/white_color"
+                        android:textSize="@dimen/button_text" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

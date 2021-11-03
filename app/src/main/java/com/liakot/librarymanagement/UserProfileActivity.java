@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -30,6 +32,7 @@ public class UserProfileActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase  database;
 
+    String firstNameSt, lastNameSt, studentIdSt,emailSt, phoneSt, facultySt, departmentSt, profileSt, passwordSt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +51,21 @@ public class UserProfileActivity extends AppCompatActivity {
                 UserProfileClass user = snapshot.getValue(UserProfileClass.class);
 
                 assert user != null;
+                firstNameSt = user.getFirstName();
+                lastNameSt = user.getLastName();
+                studentIdSt = user.getStudentId();
+                emailSt = user.getEmail();
+                phoneSt = user.getPhone();
+                facultySt = user.getFaculty();
+                departmentSt = user.getDepartment();
+                profileSt = user.getPicture();
+                passwordSt = user.getPassword();
                 if(!user.getPicture().isEmpty())
                 {
-                    //TODO------ set picture ic imageView----;
-                    profilePicture.setImageResource(R.drawable.icon_user_profile_24dp);
+                    //TODO------ set picture in imageView----;
+                    Picasso.get().load(profileSt).into(profilePicture);
+
+//                    profilePicture.setImageResource(R.drawable.icon_user_profile_24dp);
                 }
                 firstName.setText(user.getFirstName());
                 lastName.setText(user.getLastName());
@@ -73,7 +87,18 @@ public class UserProfileActivity extends AppCompatActivity {
         editProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO--goto updateProfile and pass required information-------
+                Intent intent = new Intent(UserProfileActivity.this, UpdateProfileActivity.class);
+                intent.putExtra("FirstName", firstNameSt);
+                intent.putExtra("LastName", lastNameSt);
+                intent.putExtra("StudentId", studentIdSt);
+                intent.putExtra("Email", emailSt);
+                intent.putExtra("Phone", phoneSt);
+                intent.putExtra("Faculty", facultySt);
+                intent.putExtra("Department", departmentSt);
+                intent.putExtra("Picture", profileSt);
+                intent.putExtra("Password", passwordSt);
+
+                startActivity(intent);
             }
         });
 

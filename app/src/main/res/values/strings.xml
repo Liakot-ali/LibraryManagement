@@ -104,6 +104,8 @@
     <dimen name="strokeWidth">2sp</dimen>
     <dimen name="image_border">2sp</dimen>
     <dimen name="textBoxRadius">10sp</dimen>
+    <dimen name="cardViewRadius">5sp</dimen>
+    <dimen name="cardElevation">5sp</dimen>
 
     <dimen name="editTextPad">5sp</dimen>
     <dimen name="lay_pad">15sp</dimen>

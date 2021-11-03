@@ -1,5 +1,6 @@
 package com.liakot.librarymanagement;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -8,6 +9,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -15,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     CircleImageView profilePicture;
     ImageView searchBook, contacts, category, myBooks, nextBookList, pendingList, signOut;
+    FirebaseDatabase database;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         //----------------Initialization Section-----------
+
+        database = FirebaseDatabase.getInstance("https://library-management-8d07f-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        mAuth = FirebaseAuth.getInstance();
+
         profilePicture = findViewById(R.id.homeProfilePicture);
         searchBook = findViewById(R.id.homeSearchBook);
         category = findViewById(R.id.homeCategory);
@@ -32,6 +50,22 @@ public class MainActivity extends AppCompatActivity {
         nextBookList = findViewById(R.id.homeNextBook);
         signOut = findViewById(R.id.homeSignOut);
 
+        DatabaseReference profileRef = database.getReference("Student").child("User").child(Objects.requireNonNull(mAuth.getUid())).child("Profile");
+        profileRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserProfileClass profileClass = snapshot.getValue(UserProfileClass.class);
+                assert profileClass != null;
+                if(!profileClass.getPicture().isEmpty()) {
+                    Picasso.get().load(profileClass.getPicture()).into(profilePicture);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //--------------On click Section-------------
         profilePicture.setOnClickListener(new View.OnClickListener() {
