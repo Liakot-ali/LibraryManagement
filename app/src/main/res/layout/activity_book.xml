@@ -87,6 +87,13 @@
                         android:padding="@dimen/text_pad">
 
                         <TextView
+                            android:id="@+id/bookNamde"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Book Name"
+                            android:textColor="@color/blue_color"
+                            android:textSize="@dimen/normal_text" />
+                        <TextView
                             android:id="@+id/bookName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -150,13 +157,20 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/dksfr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textSize="@dimen/normal_text"
+                            android:text="Position" />
+                        <TextView
                             android:id="@+id/booksPosition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/inner_pad"
                             android:textColor="@color/normal_text_color"
-                            android:textSize="@dimen/small_text"
-                            android:text="Position" />
+                            android:textSize="@dimen/normal_text"
+                            android:text="Position"/>
                     </LinearLayout>
 
                 </LinearLayout>

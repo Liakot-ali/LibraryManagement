@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -40,75 +43,107 @@ public class BookActivity extends AppCompatActivity {
 
         Initialize();
 
-        //TODO
+
         requestBtn.setOnClickListener(view -> {
             if (!quantitySt.equals("0")) {
 
-                String userId = mAuth.getUid();
-                String uniqueId = UUID.randomUUID().toString();
-                assert userId != null;
-                DatabaseReference studentProfileRef = database.getReference("Student").child("User").child(userId).child("Profile");
-                DatabaseReference pendingRef = database.getReference("Student").child("User").child(userId).child("PendingList").child(uniqueId);
-                DatabaseReference adminRef = database.getReference("Admin").child("RequestList").child(uniqueId);
-
-                //------------- add the book to the pending List-------------
-                AddBookClass requestBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
-
-                //-----------add the book and student details in admin Request List--------
-                RequestBookClass newRequestBook = new RequestBookClass();
-                studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(BookActivity.this);
+                dialog.setTitle("Are You Sure?");
+                dialog.setMessage("Do you want to get this book?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        UserProfileClass userProfile = snapshot.getValue(UserProfileClass.class);
-                        assert userProfile != null;
-                        newRequestBook.setStudentName(userProfile.getFirstName() + " " + userProfile.getLastName());
-                        newRequestBook.setStudentId(userProfile.getStudentId());
-                        newRequestBook.setBookName(bookNameSt);
-                        newRequestBook.setAuthorName(authorNameSt);
-                        newRequestBook.setBookEdition(editionSt);
-                        newRequestBook.setBookPosition(positionSt);
-                        newRequestBook.setBookQuantity(quantitySt);
-                        newRequestBook.setBookPage(pageSt);
-                        newRequestBook.setBookDepartment(departmentSt);
-                        newRequestBook.setBookId(uniqueId);
-                        newRequestBook.setUserId(userId);
+                    public void onClick(DialogInterface dialog, int which) {
+                        String userId = mAuth.getUid();
+                        String uniqueId = UUID.randomUUID().toString();
+                        assert userId != null;
+                        DatabaseReference studentProfileRef = database.getReference("Student").child("User").child(userId).child("Profile");
+                        DatabaseReference pendingRef = database.getReference("Student").child("User").child(userId).child("PendingList").child(uniqueId);
+                        DatabaseReference adminRef = database.getReference("Admin").child("RequestList").child(uniqueId);
 
-                        pendingRef.setValue(requestBook).addOnCompleteListener(task -> {
-                            adminRef.setValue(newRequestBook).addOnCompleteListener(task1 -> {
-                                if (task1.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "The book needs to be approved by librarian", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                        //------------- add the book to the pending List-------------
+                        AddBookClass requestBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
+
+                        //-----------add the book and student details in admin Request List--------
+                        RequestBookClass newRequestBook = new RequestBookClass();
+                        studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                UserProfileClass userProfile = snapshot.getValue(UserProfileClass.class);
+                                assert userProfile != null;
+                                newRequestBook.setStudentName(userProfile.getFirstName() + " " + userProfile.getLastName());
+                                newRequestBook.setStudentId(userProfile.getStudentId());
+                                newRequestBook.setBookName(bookNameSt);
+                                newRequestBook.setAuthorName(authorNameSt);
+                                newRequestBook.setBookEdition(editionSt);
+                                newRequestBook.setBookPosition(positionSt);
+                                newRequestBook.setBookQuantity(quantitySt);
+                                newRequestBook.setBookPage(pageSt);
+                                newRequestBook.setBookDepartment(departmentSt);
+                                newRequestBook.setBookId(uniqueId);
+                                newRequestBook.setUserId(userId);
+
+                                pendingRef.setValue(requestBook).addOnCompleteListener(task -> {
+                                    adminRef.setValue(newRequestBook).addOnCompleteListener(task1 -> {
+                                        if (task1.isSuccessful()) {
+                                            Toast toast = new Toast(BookActivity.this);
+                                            toast.setText("The book needs to be approved by librarian");
+                                            toast.setDuration(Toast.LENGTH_SHORT);
+                                            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0,0);
+                                            toast.show();
+                                        } else {
+                                            Toast.makeText(BookActivity.this, "Please try again", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                });
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            }
                         });
                     }
+                }).setNegativeButton("No, Thanks", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(BookActivity.this, "Your request is canceled", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }).show();
             } else {
-                Toast.makeText(getApplicationContext(), "This book is not available now. Add it to next list", Toast.LENGTH_SHORT).show();
+                Toast toast = new Toast(BookActivity.this);
+                toast.setText("This book is not available now. Add it to next list");
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0,0);
+                toast.show();
             }
         });
 
         //TODO
         addNextBtn.setOnClickListener(v -> {
-            String userId = mAuth.getUid();
-            String uniqueId = UUID.randomUUID().toString();
-            assert userId != null;
-            DatabaseReference nextRef = database.getReference("Student").child("User").child(userId).child("NextList").child(uniqueId);
-            //--------------- add the book to the nextList ------------------
-            AddBookClass nextBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
-            nextRef.setValue(nextBook).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "The book is added to your Next List", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder dialog = new AlertDialog.Builder(BookActivity.this);
+            dialog.setTitle("Are Your Sure?").setMessage("Do your want to get this later?");
+            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String userId = mAuth.getUid();
+                    String uniqueId = UUID.randomUUID().toString();
+                    assert userId != null;
+                    DatabaseReference nextRef = database.getReference("Student").child("User").child(userId).child("NextList").child(uniqueId);
+                    //--------------- add the book to the nextList ------------------
+                    AddBookClass nextBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, uniqueId);
+                    nextRef.setValue(nextBook).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast toast = new Toast(BookActivity.this);
+                            toast.setText("The book is added to your Next List");
+                            toast.setDuration(Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0,0);
+                            toast.show();
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Something went wrong. Please try again", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Something went wrong. Please try again", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-            });
+            }).setNegativeButton("No", null).show();
         });
 
     }

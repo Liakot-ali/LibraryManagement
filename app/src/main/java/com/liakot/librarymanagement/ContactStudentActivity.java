@@ -3,9 +3,13 @@ package com.liakot.librarymanagement;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.ActivityNotFoundException;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class ContactStudentActivity extends AppCompatActivity {
 
@@ -49,7 +53,14 @@ public class ContactStudentActivity extends AppCompatActivity {
         facultySt = getIntent().getStringExtra("faculty");
         departmentSt = getIntent().getStringExtra("department");
         pictureSt = getIntent().getStringExtra("profilePicture");
-
+        try {
+            if (!pictureSt.equals("")) {
+                Picasso.get().load(pictureSt).into(picture);
+            }
+        }
+        catch (ActivityNotFoundException exception){
+            Log.e("Activity", "Initialize: " + exception.getMessage());
+        }
         name.setText(nameSt);
         studentId.setText(sIdSt);
         email.setText(emailSt);

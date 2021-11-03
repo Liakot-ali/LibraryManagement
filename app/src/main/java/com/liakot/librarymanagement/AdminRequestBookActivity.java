@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -99,28 +101,41 @@ public class AdminRequestBookActivity extends AppCompatActivity {
         denyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               requestRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                   @Override
-                   public void onComplete(@NonNull Task<Void> task) {
-                       if(task.isSuccessful())
-                       {
-                           pendingRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                               @Override
-                               public void onComplete(@NonNull Task<Void> task) {
-                                   Toast.makeText(getApplicationContext(), "Book request denyed", Toast.LENGTH_SHORT).show();
-                                   Intent intent = new Intent(AdminRequestBookActivity.this, AdminRequestListActivity.class);
-                                   intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                   intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                   startActivity(intent);
-                                   finish();
-                               }
-                           });
-                       }
-                       else{
-                           Toast.makeText(getApplicationContext(), "Check internet connection", Toast.LENGTH_SHORT).show();
-                       }
-                   }
-               });
+                AlertDialog.Builder dialog = new AlertDialog.Builder(AdminRequestBookActivity.this);
+                dialog.setTitle("Are You Sure?").setMessage("Do you want to deny request?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        requestRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful())
+                                {
+                                    pendingRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(getApplicationContext(), "Book request denyed", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(AdminRequestBookActivity.this, AdminRequestListActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), "Check internet connection", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(AdminRequestBookActivity.this, "Book request not denyed", Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
+
             }
         });
 

@@ -92,26 +92,54 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Student Details"
-                            android:textColor="@color/blue_color"
+                            android:textColor="@color/normal_text_color"
                             android:textSize="@dimen/normal_text" />
 
-                        <TextView
-                            android:id="@+id/adminRqstStudentName"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/lay_pad"
-                            android:textSize="@dimen/normal_text"
-                            android:textColor="@color/normal_text_color"
-                            android:text="Student Name" />
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/image_border"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/adminRqstStudentID"
+                            <TextView
+                                android:id="@+id/adminRqstStuddentName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Name: "
+                                android:textColor="@color/blue_color"
+                                android:textSize="@dimen/normal_text" />
+                            <TextView
+                                android:id="@+id/adminRqstStudentName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="@dimen/lay_pad"
+                                android:text="Student Name"
+                                android:textColor="@color/normal_text_color"
+                                android:textSize="@dimen/normal_text" />
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/lay_pad"
-                            android:textSize="@dimen/normal_text"
-                            android:textColor="@color/normal_text_color"
-                            android:text="Student ID" />
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/image_border"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/adminRqstStdfudentID"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SID: "
+                                android:textColor="@color/blue_color"
+                                android:textSize="@dimen/normal_text" />
+                            <TextView
+                                android:id="@+id/adminRqstStudentID"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="@dimen/lay_pad"
+                                android:text="Student ID"
+                                android:textColor="@color/normal_text_color"
+                                android:textSize="@dimen/normal_text" />
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -131,27 +159,56 @@
                                 android:id="@+id/kdjhfur"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/blue_color"
-                                android:textSize="@dimen/normal_text"
-                                android:text="Book Details" />
-
-                            <TextView
-                                android:id="@+id/adminRqstBookName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/normal_text"
-                                android:paddingLeft="@dimen/lay_pad"
+                                android:text="Book Details"
                                 android:textColor="@color/normal_text_color"
-                                android:text="Book Name" />
+                                android:textSize="@dimen/normal_text" />
 
-                            <TextView
-                                android:id="@+id/adminRqstAuthorName"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/normal_text"
-                                android:paddingLeft="@dimen/lay_pad"
-                                android:textColor="@color/normal_text_color"
-                                android:text="Author Name" />
+                                android:layout_height="match_parent"
+                                android:padding="@dimen/image_border"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/adminRqstBofokName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Name: "
+                                    android:textColor="@color/blue_color"
+                                    android:textSize="@dimen/normal_text" />
+                                <TextView
+                                    android:id="@+id/adminRqstBookName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="@dimen/lay_pad"
+                                    android:text="Book Name"
+                                    android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/normal_text" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="@dimen/image_border"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/adminRqstAfuthorName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Author:"
+                                    android:textColor="@color/blue_color"
+                                    android:textSize="@dimen/normal_text" />
+                                <TextView
+                                    android:id="@+id/adminRqstAuthorName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="@dimen/lay_pad"
+                                    android:text="Author Name"
+                                    android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/normal_text" />
+                            </LinearLayout>
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -181,13 +238,20 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/adminRqdstPosition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Position"
+                            android:textColor="@color/blue_color"
+                            android:textSize="@dimen/normal_text" />
+                        <TextView
                             android:id="@+id/adminRqstPosition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/inner_pad"
                             android:text="Position"
                             android:textColor="@color/normal_text_color"
-                            android:textSize="@dimen/small_text" />
+                            android:textSize="@dimen/normal_text" />
                     </LinearLayout>
 
                 </LinearLayout>

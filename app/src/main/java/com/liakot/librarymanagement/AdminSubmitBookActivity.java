@@ -1,9 +1,11 @@
 package com.liakot.librarymanagement;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -71,9 +73,22 @@ public class AdminSubmitBookActivity extends AppCompatActivity {
         });
 
         denyBtn.setOnClickListener(new View.OnClickListener() {
+            //TODO----- remove form submit list and add student my book List-------
             @Override
             public void onClick(View view) {
-                //TODO
+                AlertDialog.Builder dialog = new AlertDialog.Builder(AdminSubmitBookActivity.this);
+                dialog.setTitle("Are You Sure?").setMessage("Do you want to deny request?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(AdminSubmitBookActivity.this, "Submit request denyed", Toast.LENGTH_SHORT).show();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(AdminSubmitBookActivity.this, "Not denyed", Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
 
             }
         });

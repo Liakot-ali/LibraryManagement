@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -39,36 +41,61 @@ public class UserNextBookActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = mAuth.getUid();
-                assert userId != null;
-                DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("NextList").child(bookId);
-                myRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(UserNextBookActivity.this);
+                dialog.setTitle("Are You Sure?").setMessage("Want to delete form Next List?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Book remove from Next List", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(UserNextBookActivity.this, NextBookActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            finish();
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(), "Something went wrong. Try again.", Toast.LENGTH_SHORT).show();
-                        }
+                    public void onClick(DialogInterface dialog, int which) {
+                        String userId = mAuth.getUid();
+                        assert userId != null;
+                        DatabaseReference myRef = database.getReference("Student").child("User").child(userId).child("NextList").child(bookId);
+                        myRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Book remove from Next List", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(UserNextBookActivity.this, NextBookActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), "Something went wrong. Try again.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
-                });
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(UserNextBookActivity.this, "Book not remove", Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
+
             }
         });
         requestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(UserNextBookActivity.this);
+                dialog.setTitle("Are You Sure?").setMessage("Want to get this book?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(UserNextBookActivity.this, "Under Construction", Toast.LENGTH_SHORT).show();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(UserNextBookActivity.this, "No Action taken", Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
                 //TODO
             }
         });
 
     }
-
 
     //-------Out if Main Section-------------
 

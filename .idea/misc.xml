@@ -8,15 +8,21 @@
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/drawable/icon_contacts_24dp.xml" value="0.2911458333333333" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/drawable/icon_sign_out_24dp.xml" value="0.2911458333333333" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/drawable/search_box.xml" value="0.2911458333333333" />
-        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_book.xml" value="0.18055555555555555" />
+        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_admin_request_book.xml" value="0.25" />
+        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_admin_submit_book.xml" value="0.25" />
+        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_book.xml" value="0.264" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_category.xml" value="0.264" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_department.xml" value="0.25" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_main_admin.xml" value="0.27076923076923076" />
+        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_my_books.xml" value="0.25" />
+        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_next_book.xml" value="0.25" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_register.xml" value="0.26666666666666666" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_search.xml" value="0.25846153846153846" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_update_profile.xml" value="0.275" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_user_my_books_list.xml" value="0.18055555555555555" />
+        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_user_next_book.xml" value="0.25" />
+        <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_user_pending_book.xml" value="0.25" />
         <entry key="..\:/All App/LibraryManagement/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
       </map>
     </option>

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -60,73 +62,86 @@ public class UserMyBooksListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                DatabaseReference returnRef = database.getReference("Admin").child("ReturnList").child(bookId);
-                String userId = mAuth.getUid();
-                assert userId != null;
-                DatabaseReference profileRef = database.getReference("Student").child("User").child(userId).child("Profile");
-                DatabaseReference returnPendingRef = database.getReference("Student").child("User").child(userId).child("ReturnList").child(bookId);
-                DatabaseReference myBooksRef = database.getReference("Student").child("User").child(userId).child("MyBooks").child(bookId);
-
-                RequestBookClass newReturn = new RequestBookClass();
-
-                profileRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(UserMyBooksListActivity.this);
+                dialog.setTitle("Are you Sure").setMessage("Want to return this book?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        UserProfileClass profile = snapshot.getValue(UserProfileClass.class);
-                        assert profile != null;
-                        newReturn.setStudentName(profile.getFirstName() + " " + profile.getLastName());
-                        newReturn.setStudentId(profile.getStudentId());
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseReference returnRef = database.getReference("Admin").child("ReturnList").child(bookId);
+                        String userId = mAuth.getUid();
+                        assert userId != null;
+                        DatabaseReference profileRef = database.getReference("Student").child("User").child(userId).child("Profile");
+                        DatabaseReference returnPendingRef = database.getReference("Student").child("User").child(userId).child("ReturnList").child(bookId);
+                        DatabaseReference myBooksRef = database.getReference("Student").child("User").child(userId).child("MyBooks").child(bookId);
 
-                        AddBookClass newPendingBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, bookId);
+                        RequestBookClass newReturn = new RequestBookClass();
+
+                        profileRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                UserProfileClass profile = snapshot.getValue(UserProfileClass.class);
+                                assert profile != null;
+                                newReturn.setStudentName(profile.getFirstName() + " " + profile.getLastName());
+                                newReturn.setStudentId(profile.getStudentId());
+
+                                AddBookClass newPendingBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, bookId);
 //                newReturn = new RequestBookClass(bookNameSt, authorNameSt, studentName, studentId, editionSt, positionSt, quantitySt, pageSt, departmentSt, bookId, userId);
 
-                        newReturn.setBookName(bookNameSt);
-                        newReturn.setAuthorName(authorNameSt);
-                        newReturn.setBookEdition(editionSt);
-                        newReturn.setBookPosition(positionSt);
-                        newReturn.setBookQuantity(quantitySt);
-                        newReturn.setBookPage(pageSt);
-                        newReturn.setBookDepartment(departmentSt);
-                        newReturn.setBookId(bookId);
-                        newReturn.setUserId(userId);
+                                newReturn.setBookName(bookNameSt);
+                                newReturn.setAuthorName(authorNameSt);
+                                newReturn.setBookEdition(editionSt);
+                                newReturn.setBookPosition(positionSt);
+                                newReturn.setBookQuantity(quantitySt);
+                                newReturn.setBookPage(pageSt);
+                                newReturn.setBookDepartment(departmentSt);
+                                newReturn.setBookId(bookId);
+                                newReturn.setUserId(userId);
 
-                        returnRef.setValue(newReturn).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                returnPendingRef.setValue(newPendingBook).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                returnRef.setValue(newReturn).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful()) {
-                                            myBooksRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Toast.makeText(getApplicationContext(), "Return request sent. Check this in your pending list", Toast.LENGTH_SHORT).show();
-                                                        Intent intent = new Intent(UserMyBooksListActivity.this, MyBooksActivity.class);
-                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                        startActivity(intent);
-                                                        finish();
-                                                    } else {
-                                                        Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
-                                                    }
+                                        returnPendingRef.setValue(newPendingBook).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()) {
+                                                    myBooksRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(getApplicationContext(), "Return request sent. Check this in your pending list", Toast.LENGTH_SHORT).show();
+                                                                Intent intent = new Intent(UserMyBooksListActivity.this, MyBooksActivity.class);
+                                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                startActivity(intent);
+                                                                finish();
+                                                            } else {
+                                                                Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
                                                 }
-                                            });
-                                        }
-                                        else {
-                                            Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
-                                        }
+                                                else {
+                                                    Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
                                     }
                                 });
+
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
                             }
                         });
-
                     }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getApplicationContext(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(UserMyBooksListActivity.this, "Return request canceled", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }).show();
+
 
 //                AddBookClass newPendingBook = new AddBookClass(bookNameSt, authorNameSt, editionSt, pageSt, departmentSt, quantitySt, positionSt, bookId);
 ////                newReturn = new RequestBookClass(bookNameSt, authorNameSt, studentName, studentId, editionSt, positionSt, quantitySt, pageSt, departmentSt, bookId, userId);
