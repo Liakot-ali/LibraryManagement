@@ -87,7 +87,8 @@
                         android:text="Book Name"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -101,7 +102,8 @@
                             android:background="@drawable/edit_text_style40"
                             android:hint="Book"
                             android:inputType="textMultiLine"
-                            android:padding="@dimen/editTextPad" />
+                            android:padding="@dimen/editTextPad"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -120,7 +122,8 @@
                         android:text="Author Name"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -154,7 +157,8 @@
                         android:text="Edition"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -162,13 +166,14 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/addBookEdition"
+                            android:id="@+id/addContactName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/edit_text_style40"
                             android:hint="Edition"
                             android:inputType="text"
-                            android:padding="@dimen/editTextPad" />
+                            android:padding="@dimen/editTextPad"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -187,7 +192,8 @@
                         android:text="Total Page"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -201,7 +207,8 @@
                             android:background="@drawable/edit_text_style40"
                             android:hint="Page"
                             android:inputType="number"
-                            android:padding="@dimen/editTextPad" />
+                            android:padding="@dimen/editTextPad"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -220,7 +227,8 @@
                         android:text="Department"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -232,10 +240,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/edit_text_style40"
-                            android:hint="Department"
                             android:completionHint="Select a department"
                             android:completionThreshold="0"
-                            android:padding="@dimen/editTextPad" />
+                            android:hint="Department"
+                            android:padding="@dimen/editTextPad"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -254,7 +263,8 @@
                         android:text="Quantity"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -268,7 +278,8 @@
                             android:background="@drawable/edit_text_style40"
                             android:hint="Quantity"
                             android:inputType="number"
-                            android:padding="@dimen/editTextPad" />
+                            android:padding="@dimen/editTextPad"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </LinearLayout>
 
                 </LinearLayout>

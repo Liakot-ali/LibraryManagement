@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -18,8 +16,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -109,7 +105,7 @@ public class AddBookActivity extends AppCompatActivity {
         //------------Initialization Section---------------
         bookName = findViewById(R.id.addBookBookName);
         authorName = findViewById(R.id.addBookAuthor);
-        edition = findViewById(R.id.addBookEdition);
+        edition = findViewById(R.id.addContactName);
         totalPage = findViewById(R.id.addBookPage);
         department = findViewById(R.id.addBookDepartment);
         quantity = findViewById(R.id.addBookQuantity);

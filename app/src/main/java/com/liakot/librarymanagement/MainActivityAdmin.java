@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class MainActivityAdmin extends AppCompatActivity {
 
-    ImageView addNewBook, increaseSize, requestList, submitList;
+    ImageView addNewBook, increaseSize, requestList, submitList, addContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +20,20 @@ public class MainActivityAdmin extends AppCompatActivity {
         increaseSize = findViewById(R.id.adminIncreaseSize);
         requestList = findViewById(R.id.adminRequestList);
         submitList = findViewById(R.id.adminSubmitList);
+        addContact = findViewById(R.id.adminAddContact);
 
 
         addNewBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivityAdmin.this, AddBookActivity.class);
+                startActivity(intent);
+            }
+        });
+        addContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivityAdmin.this, AdminAddContactActivity.class);
                 startActivity(intent);
             }
         });

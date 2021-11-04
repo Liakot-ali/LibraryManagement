@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AdminAddContactActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDemo"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/toolbar_background" />
+
+        <LinearLayout
+            android:id="@+id/toolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_marginLeft="@dimen/toolbarMargin"
+            android:layout_marginRight="@dimen/toolbarMargin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!--
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/admin_profilePicture"
+                    android:layout_width="60sp"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:padding="@dimen/inner_pad"
+                    android:src="@drawable/icon_user_profile_24dp"
+                    app:civ_border_color="@color/imageView_border_color"
+                    app:civ_border_width="@dimen/image_border"
+                    tools:ignore="VectorDrawableCompat" />
+                -->
+            <TextView
+                android:id="@+id/toolbarTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Add Contact"
+                android:textColor="@color/toolbar_text_color"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/toolbar_text" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/text_pad">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/addContactProfile"
+                    android:layout_width="150sp"
+                    android:layout_height="150sp"
+                    android:src="@drawable/icon_user_profile_24dp" />
+
+                <Button
+                    android:id="@+id/addContactAddImage"
+                    style="@android:style/Widget.Button.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/lay_pad"
+                    android:background="@drawable/button_style"
+                    android:padding="@dimen/text_pad"
+                    android:text="Add Image"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/button_text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:orientation="vertical"
+                android:padding="@dimen/lay_pad">
+
+                <TextView
+                    android:id="@+id/lakjfsfisfr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/normal_text_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/normal_text"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/addContactName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_style40"
+                    android:hint="Person Name"
+                    android:inputType="text"
+                    android:padding="@dimen/editTextPad"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/lakjfsfir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Position"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:textColor="@color/normal_text_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/normal_text"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/addContactPosition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_style40"
+                    android:hint="Person Position"
+                    android:inputType="textMultiLine"
+                    android:padding="@dimen/editTextPad"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:orientation="vertical"
+                android:padding="@dimen/lay_pad">
+
+                <TextView
+                    android:id="@+id/lakjfsfigdr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:textColor="@color/normal_text_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/normal_text"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/addContactPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_style40"
+                    android:hint="01234567890"
+                    android:inputType="number"
+                    android:padding="@dimen/editTextPad"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/lakjdfsfsfir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_pad"
+                    android:text="Email"
+                    android:textColor="@color/normal_text_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/normal_text"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/addContactEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_style40"
+                    android:completionHint="Select a department"
+                    android:completionThreshold="0"
+                    android:hint="abcd123@gmail.com"
+                    android:padding="@dimen/editTextPad"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addContactBtn"
+                style="@android:style/Widget.Button.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Contact"
+                android:layout_margin="@dimen/text_pad"
+                android:background="@drawable/button_style"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/button_text"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

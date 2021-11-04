@@ -102,13 +102,13 @@
                                     android:orientation="horizontal">
 
                                     <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/updateProfile"
+                                        android:id="@+id/addContactProfile"
                                         android:layout_width="150sp"
                                         android:layout_height="150sp"
                                         android:src="@drawable/icon_user_profile_24dp" />
 
                                     <Button
-                                        android:id="@+id/updateAddImage"
+                                        android:id="@+id/addContactAddImage"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"

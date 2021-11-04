@@ -129,7 +129,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     });
                 }
                 else{
-
                     UserProfileClass profileClass = new UserProfileClass(firstNameSt, lastNameSt, studentIdSt, emailSt, phoneSt, facultySt, departmentSt, profileSt, passwordSt, uniqueId);
                     profileRef.setValue(profileClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -170,7 +169,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         sRef = FirebaseStorage.getInstance();
 
         //-------------Initialization Section------------
-        profile = findViewById(R.id.updateProfile);
+        profile = findViewById(R.id.addContactProfile);
         firstName = findViewById(R.id.updateFirstName);
         lastName = findViewById(R.id.updateLastName);
         studentId = findViewById(R.id.updateStudentid);
@@ -179,7 +178,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         faculty = findViewById(R.id.updateFaculty);
         department = findViewById(R.id.updateDepartment);
 
-        addImage = findViewById(R.id.updateAddImage);
+        addImage = findViewById(R.id.addContactAddImage);
         update = findViewById(R.id.updateBtn);
 
         dialog = new ProgressDialog(UpdateProfileActivity.this);
