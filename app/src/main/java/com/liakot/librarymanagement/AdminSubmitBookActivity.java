@@ -26,7 +26,7 @@ public class AdminSubmitBookActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView studentName, studentId, bookName, authorName, remainingTime, edition, position;
-    Button approveBtn, denyBtn, contactBtn;
+    Button approveBtn, contactBtn;
     FirebaseDatabase database;
     String bookNameSt, authorNameSt, studentProfilePicture, studentNameSt, studentIdSt, studentEmailSt, studentPhoneSt, studentDepartmentSt, studentFacultySt, bookIdSt, userIdSt;
     String bookPageSt, bookEditionSt, bookPositionSt, bookRemainingTime, bookDepartmentSt;
@@ -72,26 +72,6 @@ public class AdminSubmitBookActivity extends AppCompatActivity {
             }
         });
 
-        denyBtn.setOnClickListener(new View.OnClickListener() {
-            //TODO----- remove form submit list and add student my book List-------
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(AdminSubmitBookActivity.this);
-                dialog.setTitle("Are You Sure?").setMessage("Do you want to deny request?");
-                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(AdminSubmitBookActivity.this, "Submit request denyed", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(AdminSubmitBookActivity.this, "Not denyed", Toast.LENGTH_SHORT).show();
-                    }
-                }).show();
-
-            }
-        });
 
         contactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +127,6 @@ public class AdminSubmitBookActivity extends AppCompatActivity {
         position = findViewById(R.id.adminSubmitPosition);
         remainingTime = findViewById(R.id.adminSubmitRemainingTime);
         approveBtn = findViewById(R.id.adminSubmitApproveBtn);
-        denyBtn = findViewById(R.id.adminSubmitDenyBtn);
         contactBtn = findViewById(R.id.adminSubmitStudentContact);
 
         //-----------get value from previous activity--------------

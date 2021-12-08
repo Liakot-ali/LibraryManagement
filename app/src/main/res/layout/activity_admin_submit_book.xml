@@ -49,7 +49,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Submit Book Name"
+                android:text="Return Book"
                 android:textColor="@color/toolbar_text_color"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/toolbar_text" />
@@ -268,31 +268,11 @@
                     android:textSize="@dimen/button_text" />
 
                 <Button
-                    android:id="@+id/adminSubmitDenyBtn"
-                    style="@android:style/Widget.Button.Small"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/inner_pad"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_style"
-                    android:text="Deny"
-                    android:textColor="@color/white_color"
-                    android:textSize="@dimen/button_text" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/button_pad"
-                android:paddingRight="@dimen/button_pad"
-                android:paddingBottom="@dimen/button_pad">
-
-                <Button
                     android:id="@+id/adminSubmitStudentContact"
                     style="@android:style/Widget.Button.Small"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/inner_pad"
                     android:layout_weight="1"
                     android:background="@drawable/button_style"
                     android:text="Student Contact"

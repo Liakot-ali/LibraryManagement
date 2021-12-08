@@ -161,6 +161,7 @@ public class RegisterActivity extends AppCompatActivity {
                             for(DataSnapshot snap : snapshot.getChildren())
                             {
                                 UserProfileClass profile = snap.getValue(UserProfileClass.class);
+                                assert profile != null;
                                 if(emailSt.equals(profile.getEmail()))
                                 {
                                     indEmail = false;
@@ -207,7 +208,9 @@ public class RegisterActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                                         String userUniqueId = mAuth.getUid();
+
                                         //------------- add the data to App/Student/User/UserUniqueId/Profile------------------
+                                        assert userUniqueId != null;
                                         DatabaseReference profileRef = database.getReference("Student").child("User").child(userUniqueId).child("Profile");
                                         UserProfileClass profile = new UserProfileClass(firstNameSt, lastNameSt, studentIdSt,emailSt, "", "", "", "", passwordSt, userUniqueId);
 

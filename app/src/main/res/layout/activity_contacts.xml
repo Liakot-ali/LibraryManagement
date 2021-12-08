@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ContactsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#A10505"
+            android:textSize="25sp"
+            android:text="Under Construction" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,4 +91,4 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

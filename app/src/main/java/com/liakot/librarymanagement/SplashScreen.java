@@ -19,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(SplashScreen.this, "This is splash Screen", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

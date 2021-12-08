@@ -53,7 +53,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Person Name"
+                    android:text="Librarian"
                     android:textColor="@color/toolbar_text_color"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/toolbar_text" />
@@ -115,7 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="@dimen/lay_pad"
-                        android:text="FirstName"
+                        android:text="Prof. Dr Bhabendra Kumar"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/normal_text" />
@@ -162,7 +162,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="@dimen/text_pad"
-                        android:text="1201001"
+                        android:text="01741461882"
                         android:textColor="@color/normal_text_color"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/normal_text" />
@@ -181,7 +181,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="@dimen/text_pad"
-                        android:text="abcd@email.com"
+                        android:text="professorbiswas@email.com"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/normal_text" />
 

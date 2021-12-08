@@ -166,15 +166,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
 
-
-                if(studentIDSt.equals("1000100"))
-                {
-                    Intent intent = new Intent(LoginActivity.this, MainActivityAdmin.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
             }
         });
 

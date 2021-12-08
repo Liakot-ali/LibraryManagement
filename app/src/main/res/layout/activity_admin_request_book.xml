@@ -54,7 +54,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Pending Book Name"
+                    android:text="Pending Book"
                     android:textColor="@color/toolbar_text_color"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/toolbar_text" />
